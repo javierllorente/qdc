@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>iconos/application-exit.png</file>
+        <file>iconos/edit-find.png</file>
+        <file>iconos/logo_app.png</file>
+        <file>iconos/edit-copy.png</file>
+        <file>html/inicio.html</file>
+        <file>html/castellano.html</file>
+    </qresource>
+</RCC>
