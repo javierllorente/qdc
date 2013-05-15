@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=qRAE
+Name[es]=qRAE
+GenericName=Castilian dictionary
+GenericName[es]=Diccionario castellano
+Icon=qrae
+TryExec=qrae
+Categories=Education;Utility;
