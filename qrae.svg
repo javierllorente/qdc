@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="51.40625"
-   height="69.1875"
+   width="128"
+   height="128"
    id="svg3023"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Documento nuevo 2">
+   sodipodi:docname="qrae.svg">
   <defs
      id="defs3025" />
   <sodipodi:namedview
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.0074671"
-     inkscape:cx="338.5625"
+     inkscape:cx="211.01491"
      inkscape:cy="139.41437"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,10 +55,10 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-11.4375,-937.76786)">
+     transform="translate(-11.4375,-878.95536)">
     <g
        id="g3042"
-       transform="translate(-80,477.14286)">
+       transform="translate(-41.705351,447.73605)">
       <rect
          inkscape:export-ydpi="89"
          inkscape:export-xdpi="89"
