@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.2.2";
+    appVersion = "0.2.3";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
     ayudaUsoDrae = "http://lema.rae.es/drae/html/advertencia.html";
@@ -143,6 +143,8 @@ void MainWindow::errorAlCargar() {
                 "<body>"
                 "<h1>Error: No se ha podido cargar la p&aacute;gina</h1>"
                 "Por favor, comprueba que tu ordenador est&eacute; conectado a Internet."
+                "<br>"
+                "En caso afirmativo, int&eacute;ntalo de nuevo."
                 "</body>"
                 "</html>"
                 );
