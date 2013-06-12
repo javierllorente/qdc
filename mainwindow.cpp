@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.2.3";
+    appVersion = "0.2.4";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
     ayudaUsoDrae = "http://lema.rae.es/drae/html/advertencia.html";
@@ -36,8 +36,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     createTrayIcon();
     ui->setupUi(this);
-
-    readSettings();
 
     QLocale castellano(QLocale::Spanish, QLocale::Spain);
     ui->webView->setLocale(castellano);
@@ -55,6 +53,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->webView->setContextMenuPolicy(Qt::CustomContextMenu);
     ui->webView->show();
+
+     readSettings();
 
 }
 
@@ -195,14 +195,25 @@ void MainWindow::on_pushButtonConsultar_clicked()
     consultar(ui->lineEditConsultar->text());
 }
 
+void MainWindow::ocultarVentana()
+{
+    hide();
+    actionRestore->setText("Mostrar");
+}
+
+void MainWindow::mostrarVentana()
+{
+    showNormal();
+    actionRestore->setText("Ocultar");
+}
+
 void MainWindow::toggleVisibility()
 {
     if (this->isVisible()) {
-        hide();
-        actionRestore->setText("Mostrar");        
-    } else  {
-        showNormal();
-        actionRestore->setText("Ocultar");
+        ocultarVentana();
+
+    } else {
+        mostrarVentana();
     }
 }
 
@@ -267,17 +278,45 @@ void MainWindow::on_actionSalir_triggered()
 
 void MainWindow::writeSettings()
 {
+    qDebug() << "Escribiendo ajustes...";
     QSettings settings("qRAE","Diccionario castellano de la RAE");
     settings.beginGroup("MainWindow");
-    settings.setValue("pos", pos());
+
+    settings.setValue("Maximized", isMaximized());
+    settings.setValue("Visibility", this->isVisible());
+
+    if (!isMaximized()) {
+        settings.setValue("pos", pos());
+        settings.setValue("Geometry", saveGeometry());
+    }
+
     settings.endGroup();
 }
 
 void MainWindow::readSettings()
 {
+    qDebug() << "Leyendo ajustes...";
     QSettings settings("qRAE","Diccionario castellano de la RAE");
     settings.beginGroup("MainWindow");
+
     move(settings.value("pos", QPoint(200, 200)).toPoint());
+    restoreGeometry(settings.value("Geometry", saveGeometry()).toByteArray());
+
+    if (settings.value(("Maximized")).toBool()) {
+        showMaximized();
+
+    } else if (settings.value("Visibility").toBool()) {
+        show();
+
+    } else if (settings.value("Visibility").toString().isNull()) {
+        // Valor por defecto
+        show();
+
+    } else {
+        ocultarVentana();
+
+    }
+
     settings.endGroup();
 }
 

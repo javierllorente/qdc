@@ -60,6 +60,8 @@ private:
     QString ayudaAbreviaturasYsignos;
     QString ayudaNovedades;
     QString ayudaCastellano;
+    void ocultarVentana();
+    void mostrarVentana();
     void writeSettings();
     void readSettings();
     QTimer *timer;
