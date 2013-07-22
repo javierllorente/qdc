@@ -11,9 +11,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp\
+        libqrae.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h\
+         libqrae.h
 
 FORMS    += mainwindow.ui
 

@@ -32,6 +32,7 @@
 #include <QTimer>
 #include <QCloseEvent>
 #include <QTextEdit>
+#include <libqrae.h>
 
 namespace Ui {
 class MainWindow;
@@ -52,7 +53,8 @@ private:
     QMenu *trayIconMenu;
     QAction *actionQuit;
     QAction *actionRestore;
-    void consultar(QString);
+    DRAE *m_drae;
+    void consultar();
     QString appVersion;
     QString draeUrl;
     QString draeQuery;

@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.2.4";
+    appVersion = "0.2.5";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
     ayudaUsoDrae = "http://lema.rae.es/drae/html/advertencia.html";
@@ -56,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
      readSettings();
 
+     m_drae = new DRAE();
 }
 
 MainWindow::~MainWindow()
@@ -120,66 +121,17 @@ void MainWindow::resultadoCarga(bool ok) {
 }
 
 void MainWindow::errorAlCargar() {
+
+    ui->webView->setHtml( m_drae->getErrorMsg() );
+
     qDebug() << "Ha fallado la carga";
-
-
-    QString errorMsg(
-                "<html>"
-                "<head>"
-                "<title>Error</title>"
-                "<style type=\"text/css\">"
-                "body {"
-                "font-family: \"Arial Unicode MS\",\"TITUS Cyberbit Basic\",\"Lucida Sans Unicode\";"
-                "font-size: 13pt;"
-                "text-align: left;"
-                "}"
-                "h1 {"
-                "font-size: 13pt;"
-                "color: #9C0204;"
-                "margin-top: 20px;"
-                "}"
-                "</style>"
-                "</head>"
-                "<body>"
-                "<h1>Error: No se ha podido cargar la p&aacute;gina</h1>"
-                "Por favor, comprueba que tu ordenador est&eacute; conectado a Internet."
-                "<br>"
-                "En caso afirmativo, int&eacute;ntalo de nuevo."
-                "</body>"
-                "</html>"
-                );
-    ui->webView->setHtml(errorMsg);
-
 }
 
-void MainWindow::consultar(QString termino)
+void MainWindow::consultar()
 {
-    if (!termino.isEmpty()) {
+    if (ui->lineEditConsultar->text()!="") {
 
-        // codificación de caracteres
-        termino.replace(QString::fromUtf8("á"), "%E1");
-        termino.replace(QString::fromUtf8("é"), "%E9");
-        termino.replace(QString::fromUtf8("í"), "%ED");
-        termino.replace(QString::fromUtf8("ó"), "%F3");
-        termino.replace(QString::fromUtf8("ú"), "%FA");
-        termino.replace(QString::fromUtf8("ñ"), "%F1");
-        termino.replace(QString::fromUtf8("ü"), "%FC");
-
-        termino.replace(QString::fromUtf8("Á"), "%C1");
-        termino.replace(QString::fromUtf8("É"), "%C9");
-        termino.replace(QString::fromUtf8("Í"), "%CD");
-        termino.replace(QString::fromUtf8("Ó"), "%D3");
-        termino.replace(QString::fromUtf8("Ú"), "%DA");
-        termino.replace(QString::fromUtf8("Ñ"), "%D1");
-        termino.replace(QString::fromUtf8("Ü"), "%DC");
-
-        QUrl url(draeUrl);
-        QByteArray valBA;
-        QByteArray terBA;
-        valBA.append(draeQuery);
-        terBA.append(termino);
-        url.addEncodedQueryItem(valBA, terBA);
-        ui->webView->load(QUrl(url));
+        ui->webView->load( QUrl( m_drae->consultar( ui->lineEditConsultar->text() ) ));
         ui->lineEditConsultar->setText("");
 
     }
@@ -187,12 +139,12 @@ void MainWindow::consultar(QString termino)
 
 void MainWindow::on_lineEditConsultar_returnPressed()
 {
-    consultar((ui->lineEditConsultar->text()));
+    consultar();
 }
 
 void MainWindow::on_pushButtonConsultar_clicked()
 {
-    consultar(ui->lineEditConsultar->text());
+    consultar();
 }
 
 void MainWindow::ocultarVentana()
