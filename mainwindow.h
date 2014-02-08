@@ -58,9 +58,7 @@ private:
     QString appVersion;
     QString draeUrl;
     QString draeQuery;
-    QString ayudaUsoDrae;
     QString ayudaAbreviaturasYsignos;
-    QString ayudaNovedades;
     QString ayudaCastellano;
     void ocultarVentana();
     void mostrarVentana();
@@ -77,10 +75,8 @@ private slots:
     void on_actionAcerca_de_triggered();
     void on_actionSalir_triggered();
     void trayIconClicked(QSystemTrayIcon::ActivationReason);
-    void on_actionUso_del_diccionario_triggered();
     void on_actionAbreviaturas_y_signos_triggered();
-    void on_actionNovedades_triggered();
-    void on_actionAlgunos_datos_triggered();
+     void on_actionAlgunos_datos_triggered();
     void progresoCarga(int);
     void resultadoCarga(bool);
     void errorAlCargar();

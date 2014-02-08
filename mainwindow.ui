@@ -79,7 +79,7 @@
      <x>0</x>
      <y>0</y>
      <width>380</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
@@ -92,9 +92,7 @@
     <property name="title">
      <string>Ayuda</string>
     </property>
-    <addaction name="actionUso_del_diccionario"/>
     <addaction name="actionAbreviaturas_y_signos"/>
-    <addaction name="actionNovedades"/>
     <addaction name="actionAlgunos_datos"/>
     <addaction name="actionAcerca_de"/>
    </widget>

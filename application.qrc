@@ -6,5 +6,6 @@
         <file>iconos/edit-copy.png</file>
         <file>html/inicio.html</file>
         <file>html/castellano.html</file>
+        <file>html/abreviaturas_y_signos_empleados.html</file>
     </qresource>
 </RCC>

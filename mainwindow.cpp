@@ -25,14 +25,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.2.5";
+    appVersion = "0.2.6";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
-    ayudaUsoDrae = "http://lema.rae.es/drae/html/advertencia.html";
-    ayudaAbreviaturasYsignos = "http://lema.rae.es/drae/html/abrevt11.html";
-    ayudaNovedades = "http://lema.rae.es/drae/html/novedades22.html";
+    ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
     ayudaCastellano = "qrc:/html/castellano.html";
-
 
     createTrayIcon();
     ui->setupUi(this);
@@ -208,16 +205,12 @@ void MainWindow::on_actionAcerca_de_triggered()
                        "Versi&oacute;n: " + appVersion +
                        "<div align=\"left\">"
                        "<p>"
-                       "<b>Desarrollador:</b><br>"
-                       "Javier Llorente<br>"
-                       "javier@opensuse.org<br>"
-                       "<a href=\"http://www.javierllorente.com/\">www.javierllorente.com</a><br><br>"
-                       "<b>Temas art&iacute;sticos:</b> <br>"
-                       "Iconos de acciones:<br>"
-                       "Proyecto Oxygen<br>"
+                       "&copy; 2013-2014 Javier Llorente <br>"
+                       "<a href=\"http://www.javierllorente.com/qrae/\">www.javierllorente.com/qrae/</a><br><br>"
+                       "Proyecto Oxygen (iconos de acciones)<br>"
                        "<a href=\"http://www.oxygen-icons.org/\">www.oxygen-icons.org</a><br><br>"
                        "<b>Licencia:</b> <br>"
-                       "<nobr>Este programa est&aacute; bajo la GNU General Public License v3</nobr>"
+                       "<nobr>Este programa est&aacute; bajo la GPL v3</nobr>"
                        "</p>"
                        "</div>"
                        );
@@ -272,19 +265,9 @@ void MainWindow::readSettings()
     settings.endGroup();
 }
 
-void MainWindow::on_actionUso_del_diccionario_triggered()
-{
-    ui->webView->load(QUrl(ayudaUsoDrae));
-}
-
 void MainWindow::on_actionAbreviaturas_y_signos_triggered()
 {
     ui->webView->load(QUrl(ayudaAbreviaturasYsignos));
-}
-
-void MainWindow::on_actionNovedades_triggered()
-{
-    ui->webView->load(QUrl(ayudaNovedades));
 }
 
 void MainWindow::on_actionAlgunos_datos_triggered()
