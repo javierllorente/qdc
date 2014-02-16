@@ -131,11 +131,6 @@
     <string>&amp;Abreviaturas y signos</string>
    </property>
   </action>
-  <action name="actionNovedades">
-   <property name="text">
-    <string>Novedades en esta edición</string>
-   </property>
-  </action>
   <action name="actionAlgunos_datos">
    <property name="text">
     <string>Algunos &amp;datos</string>
