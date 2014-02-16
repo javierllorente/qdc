@@ -3,7 +3,7 @@ qRAE - Un cliente del diccionario castellano de la RAE
 ** Instalación **
 
 Paquetes RPM:
-https://build.opensuse.org/package/show?package=qrae&project=home%3Ajavierllorente
+http://software.opensuse.org/search?q=qrae
 
 Para compilar el código fuente:
 cd qrae
