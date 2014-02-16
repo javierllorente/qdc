@@ -50,7 +50,7 @@
         <item>
          <widget class="QPushButton" name="pushButtonConsultar">
           <property name="text">
-           <string>Buscar</string>
+           <string>&amp;Buscar</string>
           </property>
           <property name="icon">
            <iconset resource="application.qrc">
@@ -84,13 +84,13 @@
    </property>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
-     <string>Archivo</string>
+     <string>&amp;Archivo</string>
     </property>
     <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
-     <string>Ayuda</string>
+     <string>A&amp;yuda</string>
     </property>
     <addaction name="actionAbreviaturas_y_signos"/>
     <addaction name="actionAlgunos_datos"/>
@@ -106,7 +106,10 @@
      <normaloff>:/iconos/application-exit.png</normaloff>:/iconos/application-exit.png</iconset>
    </property>
    <property name="text">
-    <string>Salir</string>
+    <string>&amp;Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionAcerca_de">
@@ -115,17 +118,17 @@
      <normaloff>:/iconos/logo_app.png</normaloff>:/iconos/logo_app.png</iconset>
    </property>
    <property name="text">
-    <string>Acerca de qRAE</string>
+    <string>Acerca de &amp;qRAE</string>
    </property>
   </action>
   <action name="actionUso_del_diccionario">
    <property name="text">
-    <string>Uso del diccionario</string>
+    <string>&amp;Uso del diccionario</string>
    </property>
   </action>
   <action name="actionAbreviaturas_y_signos">
    <property name="text">
-    <string>Abreviaturas y signos</string>
+    <string>&amp;Abreviaturas y signos</string>
    </property>
   </action>
   <action name="actionNovedades">
@@ -135,7 +138,7 @@
   </action>
   <action name="actionAlgunos_datos">
    <property name="text">
-    <string>Algunos datos</string>
+    <string>Algunos &amp;datos</string>
    </property>
   </action>
  </widget>

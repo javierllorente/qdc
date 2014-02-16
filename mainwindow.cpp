@@ -147,13 +147,13 @@ void MainWindow::on_pushButtonConsultar_clicked()
 void MainWindow::ocultarVentana()
 {
     hide();
-    actionRestore->setText("Mostrar");
+    actionRestore->setText("&Mostrar");
 }
 
 void MainWindow::mostrarVentana()
 {
     showNormal();
-    actionRestore->setText("Ocultar");
+    actionRestore->setText("&Ocultar");
 }
 
 void MainWindow::toggleVisibility()
