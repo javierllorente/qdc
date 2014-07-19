@@ -1,7 +1,7 @@
 /* 
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2012-2013 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2012-2014 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -32,6 +32,13 @@
 #include <QTimer>
 #include <QCloseEvent>
 #include <QTextEdit>
+#include <QDesktopServices>
+#include <QDate>
+#include <QDir>
+#include <QSqlQuery>
+#include <QSqlDatabase>
+#include <QCompleter>
+#include <QStringListModel>
 #include <libqrae.h>
 
 namespace Ui {
@@ -55,11 +62,15 @@ private:
     QAction *actionRestore;
     DRAE *m_drae;
     void consultar();
+    QSqlDatabase db;
+    QCompleter *completer;
     QString appVersion;
     QString draeUrl;
     QString draeQuery;
     QString ayudaAbreviaturasYsignos;
     QString ayudaCastellano;
+    void cargarBD();
+    void actualizarBD(const QString&);
     void ocultarVentana();
     void mostrarVentana();
     void writeSettings();
@@ -80,6 +91,7 @@ private slots:
     void progresoCarga(int);
     void resultadoCarga(bool);
     void errorAlCargar();
+    void actualizarAutocompletar(const QString &);
 };
 
 #endif // MAINWINDOW_H

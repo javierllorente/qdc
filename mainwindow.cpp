@@ -1,7 +1,7 @@
 /*
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2012-2013 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2012-2014 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.2.6";
+    appVersion = "0.3.0";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
     ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
@@ -51,9 +51,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->setContextMenuPolicy(Qt::CustomContextMenu);
     ui->webView->show();
 
-     readSettings();
+    readSettings();
 
-     m_drae = new DRAE();
+    m_drae = new DRAE();
+
+    cargarBD();
 }
 
 MainWindow::~MainWindow()
@@ -84,7 +86,87 @@ void MainWindow::createTrayIcon()
     trayIcon->show();
 }
 
-void MainWindow::progresoCarga(int progreso) {
+void MainWindow::cargarBD()
+{
+    QString dataDir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "qRAE";
+    QDir dir(dataDir);
+    QString dbName = dir.filePath("historial.sqlite");
+
+    if (!dir.exists()) {
+       dir.mkdir(dataDir);
+    }
+
+    qDebug() << "db:" << dbName;
+
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbName);
+
+    if (!db.open()) {
+        qDebug() << "Error. No se ha podido abrir la base de datos";
+    } else {
+
+        if (db.tables().isEmpty()) {
+            qDebug() << "Creando tabla en BD...";
+            QSqlQuery query(db);
+            query.exec("CREATE TABLE historial (id INTEGER PRIMARY KEY, termino TEXT, fecha TEXT)");
+        }
+    }
+
+    // Puesta en marcha del autocompletado
+    QSqlQuery query(db);
+    query.exec("SELECT termino FROM historial ORDER BY id DESC");
+
+    QStringList stringList;
+    while (query.next()) {
+        stringList.append(query.value(0).toString());
+    }
+
+    QStringListModel *model = new QStringListModel(stringList);
+    completer = new QCompleter(model, this);
+
+    ui->lineEditConsultar->setCompleter(completer);
+
+    connect(ui->lineEditConsultar, SIGNAL(textEdited(const QString&)),
+            this, SLOT(actualizarAutocompletar(const QString&)));
+
+}
+
+void MainWindow::actualizarAutocompletar(const QString&)
+{
+    QStringListModel *model = (QStringListModel*)(completer->model());
+    QStringList stringList;
+    QSqlQuery query(db);
+    query.exec("SELECT termino FROM historial ORDER BY id DESC");
+
+    while (query.next()) {
+        stringList.append(query.value(0).toString());
+    }
+    model->setStringList(stringList);
+}
+
+void MainWindow::actualizarBD(const QString& termino)
+{
+    QDate fecha = QDate::currentDate();
+    QSqlQuery query(db);
+    query.exec("SELECT EXISTS (SELECT termino FROM 'historial' WHERE termino='" + termino + "')");
+    bool yaExiste = false;
+
+    while (query.next()) {
+        yaExiste = query.value(0).toBool();
+    }
+
+    if (yaExiste) {
+        query.exec("UPDATE historial SET fecha='" + fecha.toString() + "' WHERE termino='" + termino + "'");
+        qDebug() << "db: update";
+    } else {
+        qDebug() << "db: insert";
+        query.exec("INSERT INTO historial (termino, fecha) VALUES ('" + termino + "', '" + fecha.toString() + "')");
+    }
+
+}
+
+void MainWindow::progresoCarga(int progreso)
+{
 
     statusBar()->showMessage("Cargando...");
 
@@ -107,7 +189,8 @@ void MainWindow::progresoCarga(int progreso) {
     }
 }
 
-void MainWindow::resultadoCarga(bool ok) {
+void MainWindow::resultadoCarga(bool ok)
+{
 
     statusBar()->showMessage("Cargado", 5000);
 
@@ -117,7 +200,8 @@ void MainWindow::resultadoCarga(bool ok) {
     }
 }
 
-void MainWindow::errorAlCargar() {
+void MainWindow::errorAlCargar()
+{
 
     ui->webView->setHtml( m_drae->getErrorMsg() );
 
@@ -129,6 +213,7 @@ void MainWindow::consultar()
     if (ui->lineEditConsultar->text()!="") {
 
         ui->webView->load( QUrl( m_drae->consultar( ui->lineEditConsultar->text() ) ));
+        actualizarBD(ui->lineEditConsultar->text());
         ui->lineEditConsultar->setText("");
 
     }
@@ -173,7 +258,8 @@ void MainWindow::trayIconClicked(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-void MainWindow::showContextMenu(const QPoint& position) {
+void MainWindow::showContextMenu(const QPoint& position)
+{
 
     QPoint globalPosition = ui->webView->mapToGlobal(position);
 
@@ -275,7 +361,8 @@ void MainWindow::on_actionAlgunos_datos_triggered()
     ui->webView->load(QUrl(ayudaCastellano));
 }
 
-void MainWindow::closeEvent(QCloseEvent *event) {
+void MainWindow::closeEvent(QCloseEvent *event)
+{
     event->ignore();
     toggleVisibility();
 }
