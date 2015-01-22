@@ -8,7 +8,7 @@ http://software.opensuse.org/search?q=qrae
 Dependencias
 Qt5 + Qt5 WebKitWidgets + Qt5 Sqlite plugin
 
-Para compilar el código fuente, hay que ejecutas las siguientes órdenes:
+Para compilar el código fuente, hay que ejecutar las siguientes órdenes:
 cd qrae
 qmake-qt5 qrae.pro DESTDIR=/directorio/de/instalación
 make
