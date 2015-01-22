@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.4.0";
+    appVersion = "0.4.1";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
     ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
@@ -128,11 +128,18 @@ void MainWindow::cargarBD()
     ui->lineEditConsultar->setCompleter(completer);
 
     connect(ui->lineEditConsultar, SIGNAL(textEdited(const QString&)),
-            this, SLOT(actualizarAutocompletar(const QString&)));
+            this, SLOT(actualizarAutocompletado(const QString&)));
 
+    connect(completer, SIGNAL(activated(const QString&)),
+            this, SLOT(terminoAutocompletado_clicked(const QString&)));
 }
 
-void MainWindow::actualizarAutocompletar(const QString&)
+void MainWindow::terminoAutocompletado_clicked(const QString&)
+{
+    consultar();
+}
+
+void MainWindow::actualizarAutocompletado(const QString&)
 {
     QStringListModel *model = (QStringListModel*)(completer->model());
     QStringList stringList;
@@ -186,6 +193,7 @@ void MainWindow::progresoCarga(int progreso)
     if (progreso==100) {
 
         qDebug() << "(cargado)";
+        ui->lineEditConsultar->setText("");
 
     }
 }
@@ -215,7 +223,6 @@ void MainWindow::consultar()
 
         ui->webView->load( QUrl( m_drae->consultar( ui->lineEditConsultar->text() ) ));
         actualizarBD(ui->lineEditConsultar->text());
-        ui->lineEditConsultar->setText("");
 
     }
 }

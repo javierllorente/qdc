@@ -22,3 +22,7 @@ Versión 0.4.0 (2015-01-22)
 * Portado a Qt 5
 * Se usa mkpath() en vez de mkdir() para crear el directorio de la BD (por si no
 existe parte de la ruta)
+
+Versión 0.4.1 (2015-01-22)
+* Nueva funcionalidad: consulta directa al hacer clic en el término del autocompletado
+* Pequeñas mejoras

@@ -88,11 +88,12 @@ private slots:
     void on_actionSalir_triggered();
     void trayIconClicked(QSystemTrayIcon::ActivationReason);
     void on_actionAbreviaturas_y_signos_triggered();
-     void on_actionAlgunos_datos_triggered();
+    void on_actionAlgunos_datos_triggered();
     void progresoCarga(int);
     void resultadoCarga(bool);
     void errorAlCargar();
-    void actualizarAutocompletar(const QString &);
+    void actualizarAutocompletado(const QString &);
+    void terminoAutocompletado_clicked(const QString &);
 };
 
 #endif // MAINWINDOW_H
