@@ -1,7 +1,7 @@
 /*
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2012-2014 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2012-2015 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.3.0";
+    appVersion = "0.4.0";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
     ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
@@ -88,14 +88,15 @@ void MainWindow::createTrayIcon()
 
 void MainWindow::cargarBD()
 {
-    QString dataDir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "qRAE";
+    QString dataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) +
+            "/data/qraeqRAE";
     QDir dir(dataDir);
-    QString dbName = dir.filePath("historial.sqlite");
 
     if (!dir.exists()) {
-       dir.mkdir(dataDir);
+        dir.mkpath(dataDir);
     }
 
+    QString dbName = dir.filePath("historial.sqlite");
     qDebug() << "db:" << dbName;
 
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -291,7 +292,7 @@ void MainWindow::on_actionAcerca_de_triggered()
                        "Versi&oacute;n: " + appVersion +
                        "<div align=\"left\">"
                        "<p>"
-                       "&copy; 2013-2014 Javier Llorente <br>"
+                       "&copy; 2013-2015 Javier Llorente <br>"
                        "<a href=\"http://www.javierllorente.com/qrae/\">www.javierllorente.com/qrae/</a><br><br>"
                        "Proyecto Oxygen (iconos de acciones)<br>"
                        "<a href=\"http://www.oxygen-icons.org/\">www.oxygen-icons.org</a><br><br>"

@@ -1,7 +1,7 @@
 /* 
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2012-2013 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2012-2015 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  *
  */
 
-#include <QtGui/QApplication>
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])

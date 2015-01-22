@@ -1,7 +1,7 @@
 /* 
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2012-2014 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2012-2015 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,8 +21,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QtWidgets>
 #include <QMainWindow>
-#include <QtWebKit/QWebView>
+#include <QtWebKitWidgets/QWebView>
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QAction>

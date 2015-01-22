@@ -1,7 +1,7 @@
 /*
  *  libqrae - Biblioteca para consultar el diccionario castellano de la RAE
  *
- *  Copyright (C) 2013 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2013-2015 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 
 #include <QString>
 #include <QUrl>
+#include <QUrlQuery>
 #include <QDebug>
 
 class DRAE

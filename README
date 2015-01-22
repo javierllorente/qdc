@@ -5,9 +5,12 @@ qRAE - Un cliente del diccionario castellano de la RAE
 Paquetes RPM:
 http://software.opensuse.org/search?q=qrae
 
+Dependencias
+Qt5 + Qt5 WebKitWidgets + Qt5 Sqlite plugin
+
 Para compilar el código fuente:
 cd qrae
-qmake qrae.pro DESTDIR=/directorio/de/instalación
+qmake-qt5 qrae.pro DESTDIR=/directorio/de/instalación
 make
 
 

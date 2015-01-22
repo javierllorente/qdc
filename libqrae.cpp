@@ -1,7 +1,7 @@
 /*
  *  libqrae - Biblioteca para consultar el diccionario castellano de la RAE
  *
- *  Copyright (C) 2013 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2013-2015 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -54,7 +54,9 @@ QUrl DRAE::consultar(QString termino)
 
         valBA.append(draeQuery);
         terBA.append(termino);
-        url.addEncodedQueryItem(valBA, terBA);
+        QUrlQuery urlQuery;
+        urlQuery.addQueryItem(valBA, terBA);
+        url.setQuery(urlQuery);
     }
     return url;
 }

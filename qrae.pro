@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webkit sql
+QT       += core gui webkitwidgets sql
 
 TARGET = qrae
 TEMPLATE = app
