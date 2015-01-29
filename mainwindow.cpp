@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.4.1";
+    appVersion = "0.4.2";
     draeUrl = "http://lema.rae.es/drae/srv/search";
     draeQuery = "val";
     ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
@@ -180,8 +180,12 @@ void MainWindow::progresoCarga(int progreso)
 
     if(progreso!=100 && !timer->isActive()) {
 
+        // El termporizador se activará sólo una vez
         timer->setSingleShot(true);
-        timer->start(10000);
+
+        // Se inicia con el valor de 30 segundos como tiempo de espera
+        // para cargar el resultado de la consulta
+        timer->start(30000);
 
     } else if(progreso==100) {
 
