@@ -1,28 +1,31 @@
 Registro de cambios de qRAE
 ===========================
-Versión 0.2.2 (2013-05-15)
-* Primera versión de qRAE
+Versión 0.4.1 (2015-01-29)
+* Tiempo de espera para cargar el resultado de la consulta cambiado a 30 segundos
 
-Versión 0.2.3 (2013-06-06)
-* Mensaje de error actualizado
-
-Versión 0.2.4 (2013-06-12)
-* Nueva funcionalidad: guarda la posición, tamaño y estado de la ventana
-
-Versión 0.2.5 (2013-07-22)
-* Mejoras
-
-Versión 0.2.6 (2014-02-08)
-* Actualización del menú de ayuda
-
-Versión 0.3.0 (2014-07-19)
-* Nueva funcionalidad: historial de consultas
+Versión 0.4.1 (2015-01-22)
+* Nueva funcionalidad: consulta directa al hacer clic en el término del autocompletado (previamente consultado)
+* Pequeñas mejoras
 
 Versión 0.4.0 (2015-01-22)
 * Portado a Qt 5
 * Se usa mkpath() en vez de mkdir() para crear el directorio de la BD (por si no
 existe parte de la ruta)
 
-Versión 0.4.1 (2015-01-22)
-* Nueva funcionalidad: consulta directa al hacer clic en el término del autocompletado (previamente consultado)
-* Pequeñas mejoras
+Versión 0.3.0 (2014-07-19)
+* Nueva funcionalidad: historial de consultas
+
+Versión 0.2.6 (2014-02-08)
+* Actualización del menú de ayuda
+
+Versión 0.2.5 (2013-07-22)
+* Mejoras
+
+Versión 0.2.4 (2013-06-12)
+* Nueva funcionalidad: guarda la posición, tamaño y estado de la ventana
+
+Versión 0.2.3 (2013-06-06)
+* Mensaje de error actualizado
+
+Versión 0.2.2 (2013-05-15)
+* Primera versión de qRAE
