@@ -9,6 +9,9 @@ QT       += core gui webkitwidgets sql
 TARGET = qrae
 TEMPLATE = app
 
+win32: RC_ICONS = qrae.ico
+osx: ICON = qrae.icns
+
 
 SOURCES += main.cpp\
         mainwindow.cpp\
