@@ -4,7 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webkitwidgets sql
+QT       += core gui webkit sql
+
+greaterThan(QT_MAJOR_VERSION, 4) {
+    QT += webkitwidgets
+}
 
 TARGET = qrae
 TEMPLATE = app

@@ -21,26 +21,25 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtWidgets>
-#include <QMainWindow>
-#include <QtWebKitWidgets/QWebView>
-#include <QSystemTrayIcon>
-#include <QMenu>
-#include <QAction>
-#include <QDebug>
-#include <QMessageBox>
-#include <QSettings>
-#include <QTimer>
-#include <QCloseEvent>
-#include <QTextEdit>
-#include <QDesktopServices>
-#include <QDate>
-#include <QDir>
-#include <QSqlQuery>
-#include <QSqlDatabase>
-#include <QCompleter>
-#include <QStringListModel>
-#include <libqrae.h>
+#include <QtCore/QTimer>
+#include <QtSql/QSqlDatabase>
+#include <QtGui/QCloseEvent>
+
+#if QT_VERSION >= 0x050000
+#include <QtWidgets/QSystemTrayIcon>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QCompleter>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QApplication>
+#else
+#include <QtGui/QSystemTrayIcon>
+#include <QtGui/QMenu>
+#include <QtGui/QCompleter>
+#include <QtGui/QMainWindow>
+#include <QtGui/QApplication>
+#endif
+
+#include "libqrae.h"
 
 namespace Ui {
 class MainWindow;

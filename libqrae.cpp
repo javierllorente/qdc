@@ -20,6 +20,12 @@
 
 #include "libqrae.h"
 
+#include <QtCore/QDebug>
+
+#if QT_VERSION >= 0x050000
+#include <QtCore/QUrlQuery>
+#endif
+
 DRAE::DRAE()
 {
       
@@ -54,9 +60,13 @@ QUrl DRAE::consultar(QString termino)
 
         valBA.append(draeQuery);
         terBA.append(termino);
+#if QT_VERSION >= 0x050000
         QUrlQuery urlQuery;
         urlQuery.addQueryItem(valBA, terBA);
         url.setQuery(urlQuery);
+#else
+        url.addEncodedQueryItem(valBA, terBA);
+#endif
     }
     return url;
 }
