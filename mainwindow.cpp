@@ -21,6 +21,28 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QtCore/QDebug>
+#include <QtCore/QDate>
+#include <QtCore/QDir>
+#include <QtCore/QSettings>
+#include <QtSql/QSqlQuery>
+
+#if QT_VERSION >= 0x050000
+#include <QtCore/QStandardPaths>
+#include <QtCore/QStringListModel>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QTextEdit>
+#include <QtWebKitWidgets/QWebView>
+#else
+#include <QtGui/QDesktopServices>
+#include <QtGui/QStringListModel>
+#include <QtGui/QAction>
+#include <QtGui/QMessageBox>
+#include <QtGui/QTextEdit>
+#include <QtWebKit/QWebView>
+#endif
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -88,8 +110,11 @@ void MainWindow::createTrayIcon()
 
 void MainWindow::cargarBD()
 {
-    QString dataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) +
-            "/data/qraeqRAE";
+    #if QT_VERSION >= 0x050000
+    QString dataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/qraeqRAE";
+    #else
+    QString dataDir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "qraeqRAE";
+    #endif
     QDir dir(dataDir);
 
     if (!dir.exists()) {

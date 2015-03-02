@@ -21,10 +21,8 @@
 #ifndef LIBQRAE_H
 #define LIBQRAE_H
 
-#include <QString>
-#include <QUrl>
-#include <QUrlQuery>
-#include <QDebug>
+#include <QtCore/QString>
+#include <QtCore/QUrl>
 
 class DRAE
 {
