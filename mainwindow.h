@@ -79,7 +79,6 @@ private:
     void writeSettings();
     void readSettings();
     QTimer *timer;
-    QNetworkProxy *proxy;
     void closeEvent(QCloseEvent*);
 
 private slots:
