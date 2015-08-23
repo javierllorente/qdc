@@ -25,13 +25,22 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
-       <number>-1</number>
+       <number>6</number>
       </property>
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
@@ -79,7 +88,7 @@
      <x>0</x>
      <y>0</y>
      <width>380</width>
-     <height>20</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
@@ -96,7 +105,14 @@
     <addaction name="actionAlgunos_datos"/>
     <addaction name="actionAcerca_de"/>
    </widget>
+   <widget class="QMenu" name="menuEditar">
+    <property name="title">
+     <string>&amp;Editar</string>
+    </property>
+    <addaction name="actionAjustes"/>
+   </widget>
    <addaction name="menuArchivo"/>
+   <addaction name="menuEditar"/>
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -136,13 +152,22 @@
     <string>Algunos &amp;datos</string>
    </property>
   </action>
+  <action name="actionAjustes">
+   <property name="icon">
+    <iconset resource="application.qrc">
+     <normaloff>:/iconos/configure.png</normaloff>:/iconos/configure.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Ajustes</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
    <class>QWebView</class>
    <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
+   <header>QtWebKitWidgets/QWebView</header>
   </customwidget>
  </customwidgets>
  <resources>

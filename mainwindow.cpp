@@ -64,7 +64,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(progresoCarga(int)));
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(resultadoCarga(bool)));
-
     connect(ui->webView, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(showContextMenu(const QPoint&)));
 
     timer = new QTimer(this);
@@ -73,6 +72,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->setContextMenuPolicy(Qt::CustomContextMenu);
     ui->webView->show();
 
+    proxySettings = new ProxySettings();
     readSettings();
 
     m_drae = new DRAE();
@@ -82,6 +82,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete proxySettings;
     writeSettings();
     delete ui;
 }
@@ -386,6 +387,15 @@ void MainWindow::readSettings()
     }
 
     settings.endGroup();
+}
+
+void MainWindow::on_actionAjustes_triggered()
+{
+    Settings *settings = new Settings(this, proxySettings);
+    if (settings->exec()) {
+
+    }
+    delete settings;
 }
 
 void MainWindow::on_actionAbreviaturas_y_signos_triggered()
