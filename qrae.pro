@@ -19,12 +19,17 @@ osx: ICON = qrae.icns
 
 SOURCES += main.cpp\
         mainwindow.cpp\
-        libqrae.cpp
+        libqrae.cpp \
+    proxysettings.cpp \
+    settings.cpp
 
 HEADERS  += mainwindow.h\
-         libqrae.h
+         libqrae.h \
+    proxysettings.h \
+    settings.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    settings.ui
 
 OTHER_FILES +=
 
