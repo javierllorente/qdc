@@ -109,7 +109,6 @@
     <property name="title">
      <string>&amp;Editar</string>
     </property>
-    <addaction name="actionAjustes"/>
    </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuEditar"/>
@@ -150,15 +149,6 @@
   <action name="actionAlgunos_datos">
    <property name="text">
     <string>Algunos &amp;datos</string>
-   </property>
-  </action>
-  <action name="actionAjustes">
-   <property name="icon">
-    <iconset resource="application.qrc">
-     <normaloff>:/iconos/configure.png</normaloff>:/iconos/configure.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Ajustes</string>
    </property>
   </action>
  </widget>
