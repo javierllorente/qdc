@@ -62,6 +62,11 @@ private:
     QMenu *trayIconMenu;
     QAction *actionQuit;
     QAction *actionRestore;
+    void createMenuEditarActions();
+    QAction *actionDeshacer;
+    QAction *actionCopiar;
+    QAction *actionPegar;
+    QAction *actionAjustes;
     DRAE *m_drae;
     void consultar();
     ProxySettings *proxySettings;
@@ -88,7 +93,7 @@ private slots:
     void toggleVisibility();
     void on_actionAcerca_de_triggered();
     void on_actionSalir_triggered();
-    void on_actionAjustes_triggered();
+    void showSettings();
     void trayIconClicked(QSystemTrayIcon::ActivationReason);
     void on_actionAbreviaturas_y_signos_triggered();
     void on_actionAlgunos_datos_triggered();

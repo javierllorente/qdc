@@ -66,6 +66,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(resultadoCarga(bool)));
     connect(ui->webView, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(showContextMenu(const QPoint&)));
 
+    createMenuEditarActions();
+
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(errorAlCargar()));
 
@@ -107,6 +109,36 @@ void MainWindow::createTrayIcon()
     trayIconMenu->addAction(actionQuit);
 
     trayIcon->show();
+}
+
+void MainWindow::createMenuEditarActions()
+{
+    actionDeshacer = new QAction(ui->menuEditar);
+    actionDeshacer->setIcon(QIcon(":/iconos/edit-undo.png"));
+    actionDeshacer->setText("Deshacer");
+    actionDeshacer->setShortcut(QKeySequence::Undo);
+    ui->menuEditar->addAction(actionDeshacer);
+    connect(actionDeshacer, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(undo()));
+
+    actionCopiar = ui->webView->pageAction((QWebPage::Copy));
+    actionCopiar->setIcon(QIcon(":/iconos/edit-copy.png"));
+    actionCopiar->setText("Copiar");
+    actionCopiar->setShortcut(QKeySequence::Copy);
+    ui->menuEditar->addAction(actionCopiar);
+
+    actionPegar = new QAction(ui->menuEditar);
+    actionPegar->setIcon(QIcon(":/iconos/edit-paste.png"));
+    actionPegar->setText("Pegar");
+    actionPegar->setShortcut(QKeySequence::Paste);
+    ui->menuEditar->addAction(actionPegar);
+    connect(actionPegar, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(paste()));
+
+    actionAjustes = new QAction(ui->menuEditar);
+    actionAjustes->setIcon(QIcon(":/iconos/configure.png"));
+    actionAjustes->setText("Ajustes");
+    actionAjustes->setShortcut(QKeySequence::Preferences);
+    ui->menuEditar->addAction(actionAjustes);
+    connect(actionAjustes, SIGNAL(triggered(bool)), this, SLOT(showSettings()));
 }
 
 void MainWindow::cargarBD()
@@ -389,7 +421,7 @@ void MainWindow::readSettings()
     settings.endGroup();
 }
 
-void MainWindow::on_actionAjustes_triggered()
+void MainWindow::showSettings()
 {
     Settings *settings = new Settings(this, proxySettings);
     if (settings->exec()) {
