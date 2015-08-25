@@ -91,22 +91,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::createTrayIcon()
 {
-    trayIcon = new QSystemTrayIcon();
-    trayIconMenu = new QMenu();
+    actionRestore = new QAction(tr("&Ocultar"), this);
+    connect(actionRestore, SIGNAL(triggered()), this, SLOT(toggleVisibility()));
+
+    actionQuit = new QAction(tr("&Salir"), this);
+    actionQuit->setIcon(QIcon(":/iconos/application-exit.png"));
+    connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+
+    trayIconMenu = new QMenu(this);
+    trayIconMenu->addAction(actionRestore);
+    trayIconMenu->addAction(actionQuit);
+
+    trayIcon = new QSystemTrayIcon(this);
     trayIcon->setIcon(QIcon(":/iconos/logo_app.png"));
     trayIcon->setToolTip("Diccionario de la RAE");
     trayIcon->setContextMenu(trayIconMenu);
-
-    trayIconMenu->addSeparator();
-
-    actionRestore = new QAction(tr("&Ocultar"), trayIcon);
-    connect(actionRestore, SIGNAL(triggered()), this, SLOT(toggleVisibility()));
-    trayIconMenu->addAction(actionRestore);
-
-    actionQuit = new QAction(tr("&Salir"), trayIcon);
-    actionQuit->setIcon(QIcon(":/iconos/application-exit.png"));
-    connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
-    trayIconMenu->addAction(actionQuit);
 
     trayIcon->show();
 }
