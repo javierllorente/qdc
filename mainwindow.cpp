@@ -112,6 +112,13 @@ void MainWindow::createTrayIcon()
 
 void MainWindow::createMenuEditarActions()
 {
+    actionRehacer = new QAction(ui->menuEditar);
+    actionRehacer->setIcon(QIcon(":/iconos/edit-redo.png"));
+    actionRehacer->setText("Rehacer");
+    actionRehacer->setShortcut(QKeySequence::Redo);
+    ui->menuEditar->addAction(actionRehacer);
+    connect(actionRehacer, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(redo()));
+
     actionDeshacer = new QAction(ui->menuEditar);
     actionDeshacer->setIcon(QIcon(":/iconos/edit-undo.png"));
     actionDeshacer->setText("Deshacer");
@@ -131,6 +138,14 @@ void MainWindow::createMenuEditarActions()
     actionPegar->setShortcut(QKeySequence::Paste);
     ui->menuEditar->addAction(actionPegar);
     connect(actionPegar, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(paste()));
+
+    actionSeleccionarTodo = ui->webView->pageAction((QWebPage::SelectAll));
+    actionSeleccionarTodo->setIcon(QIcon(":/iconos/edit-select-all.png"));
+    actionSeleccionarTodo->setText("Seleccionar todo");
+    actionSeleccionarTodo->setShortcut(QKeySequence::SelectAll);
+    ui->menuEditar->addAction(actionSeleccionarTodo);
+
+    ui->menuEditar->addSeparator();
 
     actionAjustes = new QAction(ui->menuEditar);
     actionAjustes->setIcon(QIcon(":/iconos/configure.png"));
