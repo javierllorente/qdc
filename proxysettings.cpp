@@ -45,9 +45,13 @@ void ProxySettings::readConfig()
         proxy.setPassword(settings.value("Password").toString());
     }
 
-    bool useSystemConfig = (proxyType == QNetworkProxy::DefaultProxy);
-    QNetworkProxyFactory::setUseSystemConfiguration(useSystemConfig);
-    QNetworkProxy::setApplicationProxy(proxy);
+    if (proxyType == QNetworkProxy::DefaultProxy) {
+         QNetworkProxyFactory::setUseSystemConfiguration(true);
+    } else {
+        QNetworkProxyFactory::setUseSystemConfiguration(false);
+        QNetworkProxy::setApplicationProxy(proxy);
+    }
+
     settings.endGroup();
 }
 
@@ -74,6 +78,5 @@ QNetworkProxy ProxySettings::getProxy() const
 
 void ProxySettings::setProxy(const QNetworkProxy &proxy)
 {
-    QNetworkProxy::setApplicationProxy(proxy);
     this->proxy = proxy;
 }
