@@ -64,8 +64,10 @@ private:
     QAction *actionRestore;
     void createMenuEditarActions();
     QAction *actionDeshacer;
+    QAction *actionRehacer;
     QAction *actionCopiar;
     QAction *actionPegar;
+    QAction *actionSeleccionarTodo;
     QAction *actionAjustes;
     DRAE *m_drae;
     void consultar();
