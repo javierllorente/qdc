@@ -112,19 +112,19 @@ void MainWindow::createTrayIcon()
 
 void MainWindow::createMenuEditarActions()
 {
-    actionRehacer = new QAction(ui->menuEditar);
-    actionRehacer->setIcon(QIcon(":/iconos/edit-redo.png"));
-    actionRehacer->setText("Rehacer");
-    actionRehacer->setShortcut(QKeySequence::Redo);
-    ui->menuEditar->addAction(actionRehacer);
-    connect(actionRehacer, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(redo()));
-
     actionDeshacer = new QAction(ui->menuEditar);
     actionDeshacer->setIcon(QIcon(":/iconos/edit-undo.png"));
     actionDeshacer->setText("Deshacer");
     actionDeshacer->setShortcut(QKeySequence::Undo);
     ui->menuEditar->addAction(actionDeshacer);
     connect(actionDeshacer, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(undo()));
+
+    actionRehacer = new QAction(ui->menuEditar);
+    actionRehacer->setIcon(QIcon(":/iconos/edit-redo.png"));
+    actionRehacer->setText("Rehacer");
+    actionRehacer->setShortcut(QKeySequence::Redo);
+    ui->menuEditar->addAction(actionRehacer);
+    connect(actionRehacer, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(redo()));
 
     actionCopiar = ui->webView->pageAction((QWebPage::Copy));
     actionCopiar->setIcon(QIcon(":/iconos/edit-copy.png"));
