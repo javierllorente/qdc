@@ -95,7 +95,7 @@ void MainWindow::createTrayIcon()
     connect(actionRestore, SIGNAL(triggered()), this, SLOT(toggleVisibility()));
 
     actionQuit = new QAction(tr("&Salir"), this);
-    actionQuit->setIcon(QIcon(":/iconos/application-exit.png"));
+    actionQuit->setIcon(QIcon(":/iconos/16x16/application-exit.png"));
     connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
     trayIconMenu = new QMenu(this);
@@ -103,7 +103,7 @@ void MainWindow::createTrayIcon()
     trayIconMenu->addAction(actionQuit);
 
     trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setIcon(QIcon(":/iconos/logo_app.png"));
+    trayIcon->setIcon(QIcon(":/iconos/qrae_72x72.png"));
     trayIcon->setToolTip("Diccionario de la RAE");
     trayIcon->setContextMenu(trayIconMenu);
 
@@ -113,34 +113,34 @@ void MainWindow::createTrayIcon()
 void MainWindow::createMenuEditarActions()
 {
     actionDeshacer = new QAction(ui->menuEditar);
-    actionDeshacer->setIcon(QIcon(":/iconos/edit-undo.png"));
+    actionDeshacer->setIcon(QIcon(":/iconos/16x16/edit-undo.png"));
     actionDeshacer->setText("Deshacer");
     actionDeshacer->setShortcut(QKeySequence::Undo);
     ui->menuEditar->addAction(actionDeshacer);
     connect(actionDeshacer, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(undo()));
 
     actionRehacer = new QAction(ui->menuEditar);
-    actionRehacer->setIcon(QIcon(":/iconos/edit-redo.png"));
+    actionRehacer->setIcon(QIcon(":/iconos/16x16/edit-redo.png"));
     actionRehacer->setText("Rehacer");
     actionRehacer->setShortcut(QKeySequence::Redo);
     ui->menuEditar->addAction(actionRehacer);
     connect(actionRehacer, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(redo()));
 
     actionCopiar = ui->webView->pageAction((QWebPage::Copy));
-    actionCopiar->setIcon(QIcon(":/iconos/edit-copy.png"));
+    actionCopiar->setIcon(QIcon(":/iconos/16x16/edit-copy.png"));
     actionCopiar->setText("Copiar");
     actionCopiar->setShortcut(QKeySequence::Copy);
     ui->menuEditar->addAction(actionCopiar);
 
     actionPegar = new QAction(ui->menuEditar);
-    actionPegar->setIcon(QIcon(":/iconos/edit-paste.png"));
+    actionPegar->setIcon(QIcon(":/iconos/16x16/edit-paste.png"));
     actionPegar->setText("Pegar");
     actionPegar->setShortcut(QKeySequence::Paste);
     ui->menuEditar->addAction(actionPegar);
     connect(actionPegar, SIGNAL(triggered(bool)), ui->lineEditConsultar, SLOT(paste()));
 
     actionSeleccionarTodo = ui->webView->pageAction((QWebPage::SelectAll));
-    actionSeleccionarTodo->setIcon(QIcon(":/iconos/edit-select-all.png"));
+    actionSeleccionarTodo->setIcon(QIcon(":/iconos/16x16/edit-select-all.png"));
     actionSeleccionarTodo->setText("Seleccionar todo");
     actionSeleccionarTodo->setShortcut(QKeySequence::SelectAll);
     ui->menuEditar->addAction(actionSeleccionarTodo);
@@ -148,7 +148,7 @@ void MainWindow::createMenuEditarActions()
     ui->menuEditar->addSeparator();
 
     actionAjustes = new QAction(ui->menuEditar);
-    actionAjustes->setIcon(QIcon(":/iconos/configure.png"));
+    actionAjustes->setIcon(QIcon(":/iconos/16x16/configure.png"));
     actionAjustes->setText("Ajustes");
     actionAjustes->setShortcut(QKeySequence::Preferences);
     ui->menuEditar->addAction(actionAjustes);
@@ -350,7 +350,7 @@ void MainWindow::showContextMenu(const QPoint& position)
     QMenu webViewMenu;
 
     QAction *actionCopy = ui->webView->pageAction((QWebPage::Copy));
-    actionCopy->setIcon(QIcon(":/iconos/edit-copy.png"));
+    actionCopy->setIcon(QIcon(":/iconos/16x16/edit-copy.png"));
     actionCopy->setText("Copiar");
 
     QAction *actionBack = ui->webView->pageAction((QWebPage::Back));

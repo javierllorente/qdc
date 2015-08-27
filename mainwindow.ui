@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="application.qrc">
-    <normaloff>:/iconos/logo_app.png</normaloff>:/iconos/logo_app.png</iconset>
+    <normalon>:/iconos/qrae_72x72.png</normalon>:/iconos/qrae_72x72.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -63,7 +63,7 @@
           </property>
           <property name="icon">
            <iconset resource="application.qrc">
-            <normaloff>:/iconos/edit-find.png</normaloff>:/iconos/edit-find.png</iconset>
+            <normalon>:/iconos/16x16/edit-find.png</normalon>:/iconos/16x16/edit-find.png</iconset>
           </property>
          </widget>
         </item>
@@ -118,7 +118,7 @@
   <action name="actionSalir">
    <property name="icon">
     <iconset resource="application.qrc">
-     <normaloff>:/iconos/application-exit.png</normaloff>:/iconos/application-exit.png</iconset>
+     <normalon>:/iconos/16x16/application-exit.png</normalon>:/iconos/16x16/application-exit.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Salir</string>
@@ -130,7 +130,7 @@
   <action name="actionAcerca_de">
    <property name="icon">
     <iconset resource="application.qrc">
-     <normaloff>:/iconos/logo_app.png</normaloff>:/iconos/logo_app.png</iconset>
+     <normalon>:/iconos/qrae_72x72.png</normalon>:/iconos/qrae_72x72.png</iconset>
    </property>
    <property name="text">
     <string>Acerca de &amp;qRAE</string>
