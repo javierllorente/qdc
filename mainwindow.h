@@ -72,6 +72,7 @@ private:
     DRAE *m_drae;
     void consultar();
     ProxySettings *proxySettings;
+    Settings *settings;
     QSqlDatabase db;
     QCompleter *completer;
     QString appVersion;
@@ -87,6 +88,9 @@ private:
     void readSettings();
     QTimer *timer;
     void closeEvent(QCloseEvent*);
+
+public slots:
+    void borrarHistorial();
 
 private slots:
     void on_lineEditConsultar_returnPressed();

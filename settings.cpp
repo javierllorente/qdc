@@ -29,6 +29,11 @@ Settings::Settings(QWidget *parent, ProxySettings *proxySettings) :
     ui->setupUi(this);
 
     loadProxySettings();
+
+    connect(ui->listWidget, SIGNAL(currentRowChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
+    ui->listWidget->setCurrentRow(0);
+
+    connect(ui->pushButtonBorrarHistorial, SIGNAL(clicked(bool)), parent, SLOT(borrarHistorial()));
 }
 
 Settings::~Settings()
