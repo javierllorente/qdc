@@ -79,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_drae = new DRAE();
 
-    cargarBD();
+    history = new History();
     inicializarAutocompletado();
 
     connect(ui->lineEditConsultar, SIGNAL(returnPressed()), this, SLOT(consultar()));
@@ -159,47 +159,9 @@ void MainWindow::createMenuEditarActions()
     connect(actionAjustes, SIGNAL(triggered(bool)), this, SLOT(showSettings()));
 }
 
-void MainWindow::cargarBD()
-{
-    #if QT_VERSION >= 0x050000
-    QString dataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/qraeqRAE";
-    #else
-    QString dataDir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "qraeqRAE";
-    #endif
-    QDir dir(dataDir);
-
-    if (!dir.exists()) {
-        dir.mkpath(dataDir);
-    }
-
-    QString dbName = dir.filePath("historial.sqlite");
-    qDebug() << "db:" << dbName;
-
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbName);
-
-    if (!db.open()) {
-        qDebug() << "Error. No se ha podido abrir la base de datos";
-    } else {
-
-        if (db.tables().isEmpty()) {
-            qDebug() << "Creando tabla en BD...";
-            QSqlQuery query(db);
-            query.exec("CREATE TABLE historial (id INTEGER PRIMARY KEY, termino TEXT, fecha TEXT)");
-        }
-    }
-}
-
 void MainWindow::inicializarAutocompletado()
 {
-    // Puesta en marcha del autocompletado
-    QSqlQuery query(db);
-    query.exec("SELECT termino FROM historial ORDER BY id DESC");
-
-    QStringList stringList;
-    while (query.next()) {
-        stringList.append(query.value(0).toString());
-    }
+    QStringList stringList = history->get();
 
     QStringListModel *model = new QStringListModel(stringList);
     completer = new QCompleter(model, this);
@@ -216,35 +178,8 @@ void MainWindow::inicializarAutocompletado()
 void MainWindow::actualizarAutocompletado(const QString&)
 {
     QStringListModel *model = (QStringListModel*)(completer->model());
-    QStringList stringList;
-    QSqlQuery query(db);
-    query.exec("SELECT termino FROM historial ORDER BY id DESC");
-
-    while (query.next()) {
-        stringList.append(query.value(0).toString());
-    }
+    QStringList stringList = history->get();
     model->setStringList(stringList);
-}
-
-void MainWindow::actualizarBD(const QString& termino)
-{
-    QDate fecha = QDate::currentDate();
-    QSqlQuery query(db);
-    query.exec("SELECT EXISTS (SELECT termino FROM 'historial' WHERE termino='" + termino + "')");
-    bool yaExiste = false;
-
-    while (query.next()) {
-        yaExiste = query.value(0).toBool();
-    }
-
-    if (yaExiste) {
-        query.exec("UPDATE historial SET fecha='" + fecha.toString() + "' WHERE termino='" + termino + "'");
-        qDebug() << "db: update";
-    } else {
-        qDebug() << "db: insert";
-        query.exec("INSERT INTO historial (termino, fecha) VALUES ('" + termino + "', '" + fecha.toString() + "')");
-    }
-
 }
 
 void MainWindow::progresoCarga(int progreso)
@@ -300,7 +235,7 @@ void MainWindow::consultar()
     if (ui->lineEditConsultar->text()!="") {
 
         ui->webView->load( QUrl( m_drae->consultar( ui->lineEditConsultar->text() ) ));
-        actualizarBD(ui->lineEditConsultar->text());
+        history->update(ui->lineEditConsultar->text());
 
     }
 }
@@ -448,8 +383,7 @@ void MainWindow::borrarHistorial()
 
     if (ret==QMessageBox::Ok) {
         qDebug() << "Borrando historial...";
-        QSqlQuery query(db);
-        query.exec("DELETE FROM historial");
+        history->clear();
     }
 }
 

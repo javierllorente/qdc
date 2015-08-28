@@ -22,7 +22,6 @@
 #define MAINWINDOW_H
 
 #include <QtCore/QTimer>
-#include <QtSql/QSqlDatabase>
 #include <QtGui/QCloseEvent>
 
 #if QT_VERSION >= 0x050000
@@ -42,6 +41,7 @@
 #include "libqrae.h"
 #include "proxysettings.h"
 #include "settings.h"
+#include "history.h"
 
 namespace Ui {
 class MainWindow;
@@ -72,6 +72,7 @@ private:
     DRAE *m_drae;
     ProxySettings *proxySettings;
     Settings *settings;
+    History *history;
     QSqlDatabase db;
     QCompleter *completer;
     QString appVersion;
@@ -79,9 +80,7 @@ private:
     QString draeQuery;
     QString ayudaAbreviaturasYsignos;
     QString ayudaCastellano;
-    void cargarBD();
     void inicializarAutocompletado();
-    void actualizarBD(const QString&);
     void ocultarVentana();
     void mostrarVentana();
     void writeSettings();
