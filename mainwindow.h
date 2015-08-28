@@ -80,6 +80,7 @@ private:
     QString ayudaAbreviaturasYsignos;
     QString ayudaCastellano;
     void cargarBD();
+    void inicializarAutocompletado();
     void actualizarBD(const QString&);
     void ocultarVentana();
     void mostrarVentana();
