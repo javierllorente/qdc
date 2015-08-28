@@ -80,6 +80,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_drae = new DRAE();
 
     cargarBD();
+    inicializarAutocompletado();
 
     connect(ui->lineEditConsultar, SIGNAL(returnPressed()), this, SLOT(consultar()));
     connect(ui->pushButtonConsultar, SIGNAL(clicked(bool)), this, SLOT(consultar()));
@@ -187,7 +188,10 @@ void MainWindow::cargarBD()
             query.exec("CREATE TABLE historial (id INTEGER PRIMARY KEY, termino TEXT, fecha TEXT)");
         }
     }
+}
 
+void MainWindow::inicializarAutocompletado()
+{
     // Puesta en marcha del autocompletado
     QSqlQuery query(db);
     query.exec("SELECT termino FROM historial ORDER BY id DESC");
