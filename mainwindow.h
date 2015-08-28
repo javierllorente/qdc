@@ -74,7 +74,6 @@ private:
     History *history;
     QSqlDatabase db;
     QCompleter *completer;
-    QString appVersion;
     QString ayudaAbreviaturasYsignos;
     QString ayudaCastellano;
     void inicializarAutocompletado();
