@@ -71,7 +71,6 @@ private:
     QAction *actionAjustes;
     DRAE *m_drae;
     ProxySettings *proxySettings;
-    Settings *settings;
     History *history;
     QSqlDatabase db;
     QCompleter *completer;
@@ -87,9 +86,6 @@ private:
     void readSettings();
     QTimer *timer;
     void closeEvent(QCloseEvent*);
-
-public slots:
-    void borrarHistorial();
 
 private slots:
     void consultar();

@@ -22,7 +22,9 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include <QNetworkProxy>
+#include "history.h"
 #include "proxysettings.h"
 
 namespace Ui {
@@ -34,13 +36,14 @@ class Settings : public QDialog
     Q_OBJECT
 
 public:
-    explicit Settings(QWidget *parent = 0, ProxySettings *m_proxySettings = 0);
+    explicit Settings(QWidget *parent = 0, History *history = 0, ProxySettings *proxySettings = 0);
     ~Settings();
 
 private slots:
     void on_radioButtonManualProxy_toggled(bool checked);
     void on_buttonBox_accepted();
     void on_buttonBox_rejected();
+    void on_pushButtonBorrarHistorial_clicked();
 
 private:
     Ui::Settings *ui;
@@ -49,6 +52,7 @@ private:
     void restoreProxySettings();
     enum ProxyType { NoProxy, SystemProxy, ManualProxy };
     QNetworkProxy proxy;
+    History *m_history;
     ProxySettings *m_proxySettings;
 };
 

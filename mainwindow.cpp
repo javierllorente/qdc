@@ -364,27 +364,11 @@ void MainWindow::readSettings()
 
 void MainWindow::showSettings()
 {
-    settings = new Settings(this, proxySettings);
+    Settings *settings = new Settings(this, history, proxySettings);
     if (settings->exec()) {
 
     }
     delete settings;
-}
-
-void MainWindow::borrarHistorial()
-{
-    QMessageBox msgBox(settings);
-    msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setWindowTitle("Borrar historial");
-    msgBox.setText("¿Estás seguro de que quieres borrar el historial?");
-    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Cancel);
-    int ret = msgBox.exec();
-
-    if (ret==QMessageBox::Ok) {
-        qDebug() << "Borrando historial...";
-        history->clear();
-    }
 }
 
 void MainWindow::on_actionAbreviaturas_y_signos_triggered()

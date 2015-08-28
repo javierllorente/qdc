@@ -21,9 +21,10 @@
 #include "settings.h"
 #include "ui_settings.h"
 
-Settings::Settings(QWidget *parent, ProxySettings *proxySettings) :
+Settings::Settings(QWidget *parent, History *history, ProxySettings *proxySettings) :
     QDialog(parent),
     ui(new Ui::Settings),
+    m_history(history),
     m_proxySettings(proxySettings)
 {
     ui->setupUi(this);
@@ -32,8 +33,6 @@ Settings::Settings(QWidget *parent, ProxySettings *proxySettings) :
 
     connect(ui->listWidget, SIGNAL(currentRowChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
     ui->listWidget->setCurrentRow(0);
-
-    connect(ui->pushButtonBorrarHistorial, SIGNAL(clicked(bool)), parent, SLOT(borrarHistorial()));
 }
 
 Settings::~Settings()
@@ -143,5 +142,21 @@ void Settings::restoreProxySettings()
         ui->lineEditProxyServer->setText(proxy.hostName());
         ui->lineEditProxyUser->setText(proxy.user());
         ui->lineEditProxyPassword->setText(proxy.password());
+    }
+}
+
+void Settings::on_pushButtonBorrarHistorial_clicked()
+{
+    QMessageBox msgBox(this);
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setWindowTitle("Borrar historial");
+    msgBox.setText("¿Estás seguro de que quieres borrar el historial?");
+    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
+    int ret = msgBox.exec();
+
+    if (ret==QMessageBox::Ok) {
+        qDebug() << "Borrando historial...";
+        m_history->clear();
     }
 }
