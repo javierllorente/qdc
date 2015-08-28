@@ -21,12 +21,14 @@ SOURCES += main.cpp\
         mainwindow.cpp\
         libqrae.cpp \
     proxysettings.cpp \
-    settings.cpp
+    settings.cpp \
+    history.cpp
 
 HEADERS  += mainwindow.h\
          libqrae.h \
     proxysettings.h \
-    settings.h
+    settings.h \
+    history.h
 
 FORMS    += mainwindow.ui \
     settings.ui
