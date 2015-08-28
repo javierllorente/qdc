@@ -48,8 +48,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     appVersion = "0.4.2";
-    draeUrl = "http://lema.rae.es/drae/srv/search";
-    draeQuery = "val";
     ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
     ayudaCastellano = "qrc:/html/castellano.html";
 

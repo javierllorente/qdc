@@ -75,8 +75,6 @@ private:
     QSqlDatabase db;
     QCompleter *completer;
     QString appVersion;
-    QString draeUrl;
-    QString draeQuery;
     QString ayudaAbreviaturasYsignos;
     QString ayudaCastellano;
     void inicializarAutocompletado();
