@@ -70,7 +70,6 @@ private:
     QAction *actionSeleccionarTodo;
     QAction *actionAjustes;
     DRAE *m_drae;
-    void consultar();
     ProxySettings *proxySettings;
     Settings *settings;
     QSqlDatabase db;
@@ -93,8 +92,7 @@ public slots:
     void borrarHistorial();
 
 private slots:
-    void on_lineEditConsultar_returnPressed();
-    void on_pushButtonConsultar_clicked();
+    void consultar();
     void showContextMenu(const QPoint&);
     void toggleVisibility();
     void on_actionAcerca_de_triggered();
@@ -107,7 +105,7 @@ private slots:
     void resultadoCarga(bool);
     void errorAlCargar();
     void actualizarAutocompletado(const QString &);
-    void terminoAutocompletado_clicked(const QString &);
+
 };
 
 #endif // MAINWINDOW_H

@@ -80,6 +80,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_drae = new DRAE();
 
     cargarBD();
+
+    connect(ui->lineEditConsultar, SIGNAL(returnPressed()), this, SLOT(consultar()));
+    connect(ui->pushButtonConsultar, SIGNAL(clicked(bool)), this, SLOT(consultar()));
 }
 
 MainWindow::~MainWindow()
@@ -203,12 +206,7 @@ void MainWindow::cargarBD()
             this, SLOT(actualizarAutocompletado(const QString&)));
 
     connect(completer, SIGNAL(activated(const QString&)),
-            this, SLOT(terminoAutocompletado_clicked(const QString&)));
-}
-
-void MainWindow::terminoAutocompletado_clicked(const QString&)
-{
-    consultar();
+            this, SLOT(consultar()));
 }
 
 void MainWindow::actualizarAutocompletado(const QString&)
@@ -301,16 +299,6 @@ void MainWindow::consultar()
         actualizarBD(ui->lineEditConsultar->text());
 
     }
-}
-
-void MainWindow::on_lineEditConsultar_returnPressed()
-{
-    consultar();
-}
-
-void MainWindow::on_pushButtonConsultar_clicked()
-{
-    consultar();
 }
 
 void MainWindow::ocultarVentana()
