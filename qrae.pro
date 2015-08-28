@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webkit sql
+QT += core gui webkit sql
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += webkitwidgets
@@ -12,6 +12,9 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 
 TARGET = qrae
 TEMPLATE = app
+
+VERSION = 0.4.99
+DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
 
 win32: RC_ICONS = qrae.ico
 osx: ICON = qrae.icns

@@ -47,7 +47,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    appVersion = "0.4.2";
     ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
     ayudaCastellano = "qrc:/html/castellano.html";
 
@@ -297,7 +296,7 @@ void MainWindow::on_actionAcerca_de_triggered()
     QMessageBox::about(this,"Acerca de qRAE",
                        "<h2 align=\"left\">qRAE</h2>"\
                        "Diccionario castellano de la RAE<br>"\
-                       "Versi&oacute;n: " + appVersion +
+                       "Versi&oacute;n: " + QString(QRAE_VERSION) +
                        "<div align=\"left\">"
                        "<p>"
                        "&copy; 2013-2015 Javier Llorente <br>"
