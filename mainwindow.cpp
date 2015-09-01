@@ -65,6 +65,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     createMenuEditarActions();
 
+    searchWidget = NULL;
+
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(errorAlCargar()));
 
@@ -148,6 +150,15 @@ void MainWindow::createMenuEditarActions()
 
     ui->menuEditar->addSeparator();
 
+    actionBuscarTexto = new QAction(this);
+    actionBuscarTexto->setIcon(QIcon(":/iconos/16x16/edit-find.png"));
+    actionBuscarTexto->setText("Buscar texto");
+    actionBuscarTexto->setShortcut(QKeySequence("Ctrl+F"));
+    ui->menuEditar->addAction(actionBuscarTexto);
+    connect(actionBuscarTexto, SIGNAL(triggered(bool)), this, SLOT(buscarTexto()));
+
+    ui->menuEditar->addSeparator();
+
     actionAjustes = new QAction(ui->menuEditar);
     actionAjustes->setIcon(QIcon(":/iconos/16x16/configure.png"));
     actionAjustes->setText("Ajustes");
@@ -177,6 +188,17 @@ void MainWindow::actualizarAutocompletado(const QString&)
     QStringListModel *model = (QStringListModel*)(completer->model());
     QStringList stringList = history->get();
     model->setStringList(stringList);
+}
+
+void MainWindow::buscarTexto()
+{
+    if (searchWidget) {
+        searchWidget->selectAll();
+    } else {
+        searchWidget = new SearchWidget(this, ui->webView, ui->lineEditConsultar);
+        ui->verticalLayout->insertWidget(2, searchWidget);
+        searchWidget->focusLineEdit();
+    }
 }
 
 void MainWindow::progresoCarga(int progreso)

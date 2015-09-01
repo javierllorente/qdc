@@ -23,6 +23,7 @@
 
 #include <QtCore/QTimer>
 #include <QtGui/QCloseEvent>
+#include <QtCore/QPointer>
 
 #if QT_VERSION >= 0x050000
 #include <QtWidgets/QSystemTrayIcon>
@@ -42,6 +43,7 @@
 #include "proxysettings.h"
 #include "settings.h"
 #include "history.h"
+#include "searchwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -68,6 +70,7 @@ private:
     QAction *actionCopiar;
     QAction *actionPegar;
     QAction *actionSeleccionarTodo;
+    QAction *actionBuscarTexto;
     QAction *actionAjustes;
     DRAE *m_drae;
     ProxySettings *proxySettings;
@@ -76,6 +79,7 @@ private:
     QCompleter *completer;
     QString ayudaAbreviaturasYsignos;
     QString ayudaCastellano;
+    QPointer <SearchWidget> searchWidget;
     void inicializarAutocompletado();
     void ocultarVentana();
     void mostrarVentana();
@@ -98,6 +102,7 @@ private slots:
     void resultadoCarga(bool);
     void errorAlCargar();
     void actualizarAutocompletado(const QString &);
+    void buscarTexto();
 
 };
 
