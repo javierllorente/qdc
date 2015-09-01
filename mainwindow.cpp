@@ -290,7 +290,6 @@ void MainWindow::trayIconClicked(QSystemTrayIcon::ActivationReason reason)
 
 void MainWindow::showContextMenu(const QPoint& position)
 {
-
     QPoint globalPosition = ui->webView->mapToGlobal(position);
 
     QMenu webViewMenu;
@@ -305,11 +304,12 @@ void MainWindow::showContextMenu(const QPoint& position)
     QAction *actionForward = ui->webView->pageAction((QWebPage::Forward));
     actionForward->setText("Adelante");
 
-    webViewMenu.addAction(actionCopy);
     webViewMenu.addAction(actionBack);
     webViewMenu.addAction(actionForward);
+    webViewMenu.addSeparator();
+    webViewMenu.addAction(actionCopy);
+    webViewMenu.addAction(actionSeleccionarTodo);
     webViewMenu.exec(globalPosition);
-
 }
 
 void MainWindow::on_actionAcerca_de_triggered()
