@@ -73,19 +73,20 @@ private:
     QAction *actionBuscarTexto;
     QAction *actionAjustes;
     DRAE *m_drae;
-    ProxySettings *proxySettings;
-    History *history;
+    QTimer *m_timer;
+    History *m_history;
+    QPointer <SearchWidget> m_searchWidget;
+    ProxySettings *m_proxySettings;
     QSqlDatabase db;
     QCompleter *completer;
     QString ayudaAbreviaturasYsignos;
     QString ayudaCastellano;
-    QPointer <SearchWidget> searchWidget;
+    void setupWebView();
     void inicializarAutocompletado();
     void ocultarVentana();
     void mostrarVentana();
     void writeSettings();
     void readSettings();
-    QTimer *timer;
     void closeEvent(QCloseEvent*);
 
 private slots:

@@ -45,7 +45,12 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    m_drae(new DRAE()),
+    m_timer(new QTimer(this)),
+    m_history(new History()),
+    m_searchWidget(0),
+    m_proxySettings(new ProxySettings())
 {
     ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
     ayudaCastellano = "qrc:/html/castellano.html";
@@ -53,32 +58,9 @@ MainWindow::MainWindow(QWidget *parent) :
     createTrayIcon();
     ui->setupUi(this);
 
-    QLocale castellano(QLocale::Spanish, QLocale::Spain);
-    ui->webView->setLocale(castellano);
-
-    connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this,
-            SLOT(trayIconClicked(QSystemTrayIcon::ActivationReason)));
-
-    connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(progresoCarga(int)));
-    connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(resultadoCarga(bool)));
-    connect(ui->webView, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(showContextMenu(const QPoint&)));
-
     createMenuEditarActions();
-
-    searchWidget = NULL;
-
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(errorAlCargar()));
-
-    ui->webView->setContextMenuPolicy(Qt::CustomContextMenu);
-    ui->webView->show();
-
-    proxySettings = new ProxySettings();
+    setupWebView();
     readSettings();
-
-    m_drae = new DRAE();
-
-    history = new History();
     inicializarAutocompletado();
 
     connect(ui->lineEditConsultar, SIGNAL(returnPressed()), this, SLOT(consultar()));
@@ -87,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete proxySettings;
+    delete m_proxySettings;
     writeSettings();
     delete ui;
 }
@@ -109,6 +91,9 @@ void MainWindow::createTrayIcon()
     trayIcon->setIcon(QIcon(":/iconos/qrae_72x72.png"));
     trayIcon->setToolTip("Diccionario de la RAE");
     trayIcon->setContextMenu(trayIconMenu);
+
+    connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this,
+            SLOT(trayIconClicked(QSystemTrayIcon::ActivationReason)));
 
     trayIcon->show();
 }
@@ -167,9 +152,23 @@ void MainWindow::createMenuEditarActions()
     connect(actionAjustes, SIGNAL(triggered(bool)), this, SLOT(showSettings()));
 }
 
+void MainWindow::setupWebView()
+{
+    QLocale castellano(QLocale::Spanish, QLocale::Spain);
+    ui->webView->setLocale(castellano);
+
+    connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(progresoCarga(int)));
+    connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(resultadoCarga(bool)));
+    connect(ui->webView, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(showContextMenu(const QPoint&)));
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(errorAlCargar()));
+
+    ui->webView->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->webView->show();
+}
+
 void MainWindow::inicializarAutocompletado()
 {
-    QStringList stringList = history->get();
+    QStringList stringList = m_history->get();
 
     QStringListModel *model = new QStringListModel(stringList);
     completer = new QCompleter(model, this);
@@ -186,53 +185,48 @@ void MainWindow::inicializarAutocompletado()
 void MainWindow::actualizarAutocompletado(const QString&)
 {
     QStringListModel *model = (QStringListModel*)(completer->model());
-    QStringList stringList = history->get();
+    QStringList stringList = m_history->get();
     model->setStringList(stringList);
 }
 
 void MainWindow::buscarTexto()
 {
-    if (searchWidget) {
-        searchWidget->selectAll();
+    if (m_searchWidget) {
+        m_searchWidget->selectAll();
     } else {
-        searchWidget = new SearchWidget(this, ui->webView, ui->lineEditConsultar);
-        ui->verticalLayout->insertWidget(2, searchWidget);
-        searchWidget->focusLineEdit();
+        m_searchWidget = new SearchWidget(this, ui->webView, ui->lineEditConsultar);
+        ui->verticalLayout->insertWidget(2, m_searchWidget);
+        m_searchWidget->focusLineEdit();
     }
 }
 
 void MainWindow::progresoCarga(int progreso)
 {
-
     statusBar()->showMessage("Cargando...");
 
-    if(progreso!=100 && !timer->isActive()) {
+    if (progreso!=100 && !m_timer->isActive()) {
 
         // El termporizador se activará sólo una vez
-        timer->setSingleShot(true);
+        m_timer->setSingleShot(true);
 
         // Se inicia con el valor de 30 segundos como tiempo de espera
         // para cargar el resultado de la consulta
-        timer->start(30000);
+        m_timer->start(30000);
 
-    } else if(progreso==100) {
-
-        timer->stop();
+    } else if (progreso==100) {
+        m_timer->stop();
     }
 
     qDebug() << "progreso: " << progreso;
 
     if (progreso==100) {
-
         qDebug() << "(cargado)";
         ui->lineEditConsultar->setText("");
-
     }
 }
 
 void MainWindow::resultadoCarga(bool ok)
 {
-
     statusBar()->showMessage("Cargado", 5000);
 
     if(!ok) {
@@ -243,19 +237,15 @@ void MainWindow::resultadoCarga(bool ok)
 
 void MainWindow::errorAlCargar()
 {
-
     ui->webView->setHtml( m_drae->getErrorMsg() );
-
     qDebug() << "Ha fallado la carga";
 }
 
 void MainWindow::consultar()
 {
     if (ui->lineEditConsultar->text()!="") {
-
         ui->webView->load( QUrl( m_drae->consultar( ui->lineEditConsultar->text() ) ));
-        history->update(ui->lineEditConsultar->text());
-
+        m_history->update(ui->lineEditConsultar->text());
     }
 }
 
@@ -275,7 +265,6 @@ void MainWindow::toggleVisibility()
 {
     if (this->isVisible()) {
         ocultarVentana();
-
     } else {
         mostrarVentana();
     }
@@ -385,7 +374,7 @@ void MainWindow::readSettings()
 
 void MainWindow::showSettings()
 {
-    Settings *settings = new Settings(this, history, proxySettings);
+    Settings *settings = new Settings(this, m_history, m_proxySettings);
     if (settings->exec()) {
 
     }
