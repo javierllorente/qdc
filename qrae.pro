@@ -25,16 +25,19 @@ SOURCES += main.cpp\
         libqrae.cpp \
     proxysettings.cpp \
     settings.cpp \
-    history.cpp
+    history.cpp \
+    searchwidget.cpp
 
 HEADERS  += mainwindow.h\
          libqrae.h \
     proxysettings.h \
     settings.h \
-    history.h
+    history.h \
+    searchwidget.h
 
 FORMS    += mainwindow.ui \
-    settings.ui
+    settings.ui \
+    searchwidget.ui
 
 OTHER_FILES +=
 
