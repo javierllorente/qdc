@@ -4,6 +4,7 @@
 #include <QWebView>
 #include <QLineEdit>
 #include <QShortcut>
+#include <QKeyEvent>
 
 namespace Ui {
 class SearchWidget;
@@ -28,6 +29,7 @@ private:
     QLineEdit *lineEditConsultar;
     Ui::SearchWidget *ui;
     void findText(const QString &text, QWebPage::FindFlags findFlags);
+    void keyPressEvent(QKeyEvent *event);
 
 };
 

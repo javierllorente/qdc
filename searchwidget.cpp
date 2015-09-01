@@ -58,3 +58,10 @@ void SearchWidget::findText(const QString &text, QWebPage::FindFlags findFlags)
     }
     found ? ui->lineEdit->setStyleSheet("") : ui->lineEdit->setStyleSheet("QLineEdit { background-color: #FF6666 }");
 }
+
+void SearchWidget::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape) {
+        close();
+    }
+}
