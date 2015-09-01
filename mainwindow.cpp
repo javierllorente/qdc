@@ -313,7 +313,7 @@ void MainWindow::on_actionAcerca_de_triggered()
                        "&copy; 2013-2015 Javier Llorente <br>"
                        "<a href=\"http://www.javierllorente.com/qrae/\">www.javierllorente.com/qrae/</a>"
                        "<br><br>"
-                        "&copy; Proyecto Oxygen (iconos de menús) <br>"
+                        "&copy; Proyecto Oxygen (iconos de los menús) <br>"
                        "<a href=\"https://techbase.kde.org/Projects/Oxygen\">techbase.kde.org/Projects/Oxygen</a>"
                        "<br><br>"
                        "<b>Licencia</b> <br>"
