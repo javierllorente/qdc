@@ -368,6 +368,7 @@ void MainWindow::writeSettings()
         settings.setValue("Geometry", saveGeometry());
     }
 
+    settings.setValue("ZoomFactor", ui->webView->zoomFactor());
     settings.endGroup();
 }
 
@@ -393,6 +394,11 @@ void MainWindow::readSettings()
     } else {
         ocultarVentana();
 
+    }
+
+    qreal zoomFactor = settings.value("ZoomFactor").toDouble();
+    if (zoomFactor >= 0.50) {
+        ui->webView->setZoomFactor(zoomFactor);
     }
 
     settings.endGroup();
