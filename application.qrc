@@ -12,6 +12,9 @@
         <file>iconos/16x16/edit-undo.png</file>
         <file>iconos/16x16/go-down-search.png</file>
         <file>iconos/16x16/go-up-search.png</file>
+        <file>iconos/16x16/zoom-in.png</file>
+        <file>iconos/16x16/zoom-original.png</file>
+        <file>iconos/16x16/zoom-out.png</file>
         <file>iconos/16x16/configure.png</file>
         <file>iconos/32x32/configure.png</file>
         <file>iconos/32x32/preferences-system-network.png</file>
