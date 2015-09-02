@@ -43,6 +43,9 @@
 #include <QtWebKit/QWebView>
 #endif
 
+const QString ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
+const QString ayudaCastellano = "qrc:/html/castellano.html";
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -52,9 +55,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_searchWidget(0),
     m_proxySettings(new ProxySettings())
 {
-    ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
-    ayudaCastellano = "qrc:/html/castellano.html";
-
     createTrayIcon();
     ui->setupUi(this);
 

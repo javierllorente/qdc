@@ -79,8 +79,6 @@ private:
     ProxySettings *m_proxySettings;
     QSqlDatabase db;
     QCompleter *completer;
-    QString ayudaAbreviaturasYsignos;
-    QString ayudaCastellano;
     void setupWebView();
     void inicializarAutocompletado();
     void setupMenuVer();
