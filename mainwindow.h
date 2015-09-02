@@ -83,6 +83,7 @@ private:
     QString ayudaCastellano;
     void setupWebView();
     void inicializarAutocompletado();
+    void setupMenuVer();
     void ocultarVentana();
     void mostrarVentana();
     void writeSettings();
@@ -104,6 +105,9 @@ private slots:
     void errorAlCargar();
     void actualizarAutocompletado(const QString &);
     void buscarTexto();
+    void aumentarTamano();
+    void reducirTamano();
+    void tamanoNormal();
 
 };
 

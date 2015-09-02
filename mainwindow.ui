@@ -20,8 +20,9 @@
    <string>Diccionario de la RAE</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="application.qrc">
-    <normalon>:/iconos/qrae_72x72.png</normalon>:/iconos/qrae_72x72.png</iconset>
+   <iconset>
+    <normalon>:/iconos/qrae_72x72.png</normalon>
+   </iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -62,8 +63,9 @@
            <string>&amp;Buscar</string>
           </property>
           <property name="icon">
-           <iconset resource="application.qrc">
-            <normalon>:/iconos/16x16/edit-find.png</normalon>:/iconos/16x16/edit-find.png</iconset>
+           <iconset>
+            <normalon>:/iconos/16x16/edit-find.png</normalon>
+           </iconset>
           </property>
          </widget>
         </item>
@@ -110,15 +112,25 @@
      <string>&amp;Editar</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuVer">
+    <property name="title">
+     <string>&amp;Ver</string>
+    </property>
+    <addaction name="actionAumentar"/>
+    <addaction name="actionReducir"/>
+    <addaction name="actionNormal"/>
+   </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuEditar"/>
+   <addaction name="menuVer"/>
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionSalir">
    <property name="icon">
-    <iconset resource="application.qrc">
-     <normalon>:/iconos/16x16/application-exit.png</normalon>:/iconos/16x16/application-exit.png</iconset>
+    <iconset>
+     <normalon>:/iconos/16x16/application-exit.png</normalon>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;Salir</string>
@@ -129,8 +141,9 @@
   </action>
   <action name="actionAcerca_de">
    <property name="icon">
-    <iconset resource="application.qrc">
-     <normalon>:/iconos/qrae_72x72.png</normalon>:/iconos/qrae_72x72.png</iconset>
+    <iconset>
+     <normalon>:/iconos/qrae_72x72.png</normalon>
+    </iconset>
    </property>
    <property name="text">
     <string>Acerca de &amp;qRAE</string>
@@ -151,6 +164,36 @@
     <string>Algunos &amp;datos</string>
    </property>
   </action>
+  <action name="actionAumentar">
+   <property name="icon">
+    <iconset>
+     <normalon>:/iconos/16x16/zoom-in.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Aumentar</string>
+   </property>
+  </action>
+  <action name="actionReducir">
+   <property name="icon">
+    <iconset>
+     <normalon>:/iconos/16x16/zoom-out.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Reducir</string>
+   </property>
+  </action>
+  <action name="actionNormal">
+   <property name="icon">
+    <iconset>
+     <normalon>:/iconos/16x16/zoom-original.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Normal</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -160,8 +203,6 @@
    <header>QtWebKitWidgets/QWebView</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="application.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -62,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setupWebView();
     readSettings();
     inicializarAutocompletado();
+    setupMenuVer();
 
     connect(ui->lineEditConsultar, SIGNAL(returnPressed()), this, SLOT(consultar()));
     connect(ui->pushButtonConsultar, SIGNAL(clicked(bool)), this, SLOT(consultar()));
@@ -182,6 +183,16 @@ void MainWindow::inicializarAutocompletado()
             this, SLOT(consultar()));
 }
 
+void MainWindow::setupMenuVer()
+{
+    ui->actionAumentar->setShortcut(QKeySequence("Ctrl++"));
+    ui->actionReducir->setShortcut(QKeySequence("Ctrl+-"));
+    ui->actionNormal->setShortcut(QKeySequence("Ctrl+0"));
+    connect(ui->actionAumentar, SIGNAL(triggered(bool)), this, SLOT(aumentarTamano()));
+    connect(ui->actionReducir, SIGNAL(triggered(bool)), this, SLOT(reducirTamano()));
+    connect(ui->actionNormal, SIGNAL(triggered(bool)), this, SLOT(tamanoNormal()));
+}
+
 void MainWindow::actualizarAutocompletado(const QString&)
 {
     QStringListModel *model = (QStringListModel*)(completer->model());
@@ -198,6 +209,21 @@ void MainWindow::buscarTexto()
         ui->verticalLayout->insertWidget(2, m_searchWidget);
         m_searchWidget->focusLineEdit();
     }
+}
+
+void MainWindow::aumentarTamano()
+{
+    ui->webView->setZoomFactor(qreal(ui->webView->zoomFactor())+0.10);
+}
+
+void MainWindow::reducirTamano()
+{
+    ui->webView->setZoomFactor(qreal(ui->webView->zoomFactor())-0.10);
+}
+
+void MainWindow::tamanoNormal()
+{
+    ui->webView->setZoomFactor(qreal(1));
 }
 
 void MainWindow::progresoCarga(int progreso)
