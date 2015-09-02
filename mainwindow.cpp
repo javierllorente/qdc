@@ -218,7 +218,10 @@ void MainWindow::aumentarTamano()
 
 void MainWindow::reducirTamano()
 {
-    ui->webView->setZoomFactor(qreal(ui->webView->zoomFactor())-0.10);
+    qreal zoomFactor = ui->webView->zoomFactor();
+    if (zoomFactor>0.60) {
+        ui->webView->setZoomFactor((zoomFactor)-0.10);
+    }
 }
 
 void MainWindow::tamanoNormal()
