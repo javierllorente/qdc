@@ -82,6 +82,29 @@
           <enum>QLayout::SetDefaultConstraint</enum>
          </property>
          <item>
+          <widget class="QCheckBox" name="checkBoxStartup">
+           <property name="text">
+            <string>Ejecutar al arrancar el sistema</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
           <widget class="QLabel" name="labelHistorial">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">

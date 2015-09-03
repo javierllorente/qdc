@@ -2,6 +2,7 @@
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
  *  Copyright (C) 2015 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2014 Daniel Molkentin <danimo@owncloud.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,8 +19,17 @@
  *
  */
 
+
+
 #include "settings.h"
 #include "ui_settings.h"
+
+#ifdef Q_OS_MAC
+#include <CoreServices/CoreServices.h>
+#include <CoreFoundation/CoreFoundation.h>
+#endif
+
+const QString windowsRunPath = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 
 Settings::Settings(QWidget *parent, History *history, ProxySettings *proxySettings) :
     QDialog(parent),
@@ -52,6 +62,7 @@ void Settings::on_radioButtonManualProxy_toggled(bool checked)
 void Settings::on_buttonBox_accepted()
 {
     saveProxySettings();
+    setLaunchOnStartup(ui->checkBoxStartup->isChecked());
 }
 
 void Settings::on_buttonBox_rejected()
@@ -143,6 +154,89 @@ void Settings::restoreProxySettings()
         ui->lineEditProxyUser->setText(proxy.user());
         ui->lineEditProxyPassword->setText(proxy.password());
     }
+}
+
+void Settings::setLaunchOnStartup(bool enable)
+{
+    QString applicationName = QCoreApplication::applicationName();
+#if defined(Q_OS_WIN)
+    QSettings settings(windowsRunPath, QSettings::NativeFormat);
+    if (enable) {
+        settings.setValue(applicationName, QCoreApplication::applicationFilePath().replace('/','\\'));
+    } else {
+        settings.remove(applicationName);
+    }
+#elif defined(Q_OS_MAC)
+    /*
+     * Based on Daniel Molkentin's work
+     * https://github.com/owncloud/client/blob/master/src/libsync/utility_mac.cpp
+    */
+    QString filePath = QDir(QCoreApplication::applicationDirPath()+QString("/../..")).absolutePath();
+    CFStringRef folderCFStr = CFStringCreateWithCString(0, filePath.toUtf8().data(), kCFStringEncodingUTF8);
+    CFURLRef urlRef = CFURLCreateWithFileSystemPath (0, folderCFStr, kCFURLPOSIXPathStyle, true);
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(0, kLSSharedFileListSessionLoginItems, 0);
+
+    if (loginItems && enable) {
+        //Insert an item to the list.
+        LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems,
+                                                                     kLSSharedFileListItemLast, 0, 0,
+                                                                     urlRef, 0, 0);
+        if (item)
+            CFRelease(item);
+        CFRelease(loginItems);
+    } else if (loginItems && !enable){
+        // We need to iterate over the items and check which one is "ours".
+        UInt32 seedValue;
+        CFArrayRef itemsArray = LSSharedFileListCopySnapshot(loginItems, &seedValue);
+        CFStringRef appUrlRefString = CFURLGetString(urlRef);
+        for (int i = 0; i < CFArrayGetCount(itemsArray); i++) {
+            LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(itemsArray, i);
+            CFURLRef itemUrlRef = NULL;
+
+            if (LSSharedFileListItemResolve(item, 0, &itemUrlRef, NULL) == noErr) {
+                CFStringRef itemUrlString = CFURLGetString(itemUrlRef);
+                if (CFStringCompare(itemUrlString,appUrlRefString,0) == kCFCompareEqualTo) {
+                    LSSharedFileListItemRemove(loginItems,item); // remove it!
+                }
+                CFRelease(itemUrlRef);
+            }
+        }
+        CFRelease(itemsArray);
+        CFRelease(loginItems);
+    };
+
+    CFRelease(folderCFStr);
+    CFRelease(urlRef);
+#else // Linux, FreeBSD
+
+#if QT_VERSION >= 0x050000
+    QString userAutoStartPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+#else
+    QString userAutoStartPath = QDir::homePath() + "/.config";
+#endif
+    userAutoStartPath += "/autostart/";
+    QString targetDesktopFile = userAutoStartPath + applicationName + ".desktop";
+
+    if (enable) {
+        if (!QDir().exists(userAutoStartPath) && !QDir().mkpath(userAutoStartPath)) {
+            qDebug() << "Could not create autostart directory";
+            return;
+        }
+
+        QString sourceDesktopFile = "/usr/share/" + applicationName
+                + "/autostart/" + applicationName + ".desktop";
+
+        if (!QFile::copy(sourceDesktopFile, targetDesktopFile)) {
+            qDebug() << "Could not copy desktop file";
+            return;
+        }
+
+    } else {
+        if (!QFile::remove(targetDesktopFile)) {
+            qDebug() << "Could not remove autostart desktop file";
+        }
+    }
+#endif
 }
 
 void Settings::on_pushButtonBorrarHistorial_clicked()
