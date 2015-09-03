@@ -16,8 +16,19 @@ TEMPLATE = app
 VERSION = 0.4.99
 DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
 
+!mac:unix {
+    data_directory = /usr/share/qrae
+    autostart.path = $$data_directory/autostart
+    autostart.files += autostart/qrae.desktop
+    INSTALLS += autostart
+}
+
 win32: RC_ICONS = qrae.ico
-osx: ICON = qrae.icns
+
+osx {
+    ICON = qrae.icns
+    LIBS += -framework CoreServices -framework CoreFoundation
+}
 
 
 SOURCES += main.cpp\

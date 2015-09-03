@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=qRAE
+Name[es]=qRAE
+GenericName=Castilian RAE dictionary
+GenericName[es]=Diccionario castellano de la RAE
+Comment=Castilian RAE dictionary
+Comment[es]=Diccionario castellano de la RAE
+Icon=qrae
+Exec=qrae
+Terminal=false
+Categories=Office;Dictionary;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
