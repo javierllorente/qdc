@@ -19,8 +19,6 @@
  *
  */
 
-
-
 #include "settings.h"
 #include "ui_settings.h"
 
@@ -40,6 +38,7 @@ Settings::Settings(QWidget *parent, History *history, ProxySettings *proxySettin
     ui->setupUi(this);
 
     loadProxySettings();
+    loadAutostartValue();
 
     connect(ui->listWidget, SIGNAL(currentRowChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
     ui->listWidget->setCurrentRow(0);
@@ -156,6 +155,22 @@ void Settings::restoreProxySettings()
     }
 }
 
+void Settings::loadAutostartValue()
+{
+    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    settings.beginGroup("MainWindow");
+    ui->checkBoxStartup->setChecked(settings.value("Autostart").toBool());
+    settings.endGroup();
+}
+
+void Settings::saveAutostartValue()
+{
+    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    settings.beginGroup("MainWindow");
+    settings.setValue("Autostart", ui->checkBoxStartup->isChecked());
+    settings.endGroup();
+}
+
 void Settings::setLaunchOnStartup(bool enable)
 {
     QString applicationName = QCoreApplication::applicationName();
@@ -237,6 +252,7 @@ void Settings::setLaunchOnStartup(bool enable)
         }
     }
 #endif
+    saveAutostartValue();
 }
 
 void Settings::on_pushButtonBorrarHistorial_clicked()

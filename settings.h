@@ -54,6 +54,8 @@ private:
     QNetworkProxy proxy;
     History *m_history;
     ProxySettings *m_proxySettings;
+    void loadAutostartValue();
+    void saveAutostartValue();
     void setLaunchOnStartup(bool enable);
 };
 
