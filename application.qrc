@@ -1,23 +1,23 @@
 <RCC>
     <qresource prefix="/">
-        <file>iconos/16x16/application-exit.png</file>
-        <file>iconos/16x16/edit-find.png</file>
-        <file>iconos/qrae_72x72.png</file>
-        <file>iconos/16x16/dialog-close.png</file>
-        <file>iconos/16x16/edit-clear-history.png</file>
-        <file>iconos/16x16/edit-copy.png</file>
-        <file>iconos/16x16/edit-paste.png</file>
-        <file>iconos/16x16/edit-redo.png</file>
-        <file>iconos/16x16/edit-select-all.png</file>
-        <file>iconos/16x16/edit-undo.png</file>
-        <file>iconos/16x16/go-down-search.png</file>
-        <file>iconos/16x16/go-up-search.png</file>
-        <file>iconos/16x16/zoom-in.png</file>
-        <file>iconos/16x16/zoom-original.png</file>
-        <file>iconos/16x16/zoom-out.png</file>
-        <file>iconos/16x16/configure.png</file>
-        <file>iconos/32x32/configure.png</file>
-        <file>iconos/32x32/preferences-system-network.png</file>
+        <file>icons/16x16/application-exit.png</file>
+        <file>icons/16x16/edit-find.png</file>
+        <file>icons/qrae_72x72.png</file>
+        <file>icons/16x16/dialog-close.png</file>
+        <file>icons/16x16/edit-clear-history.png</file>
+        <file>icons/16x16/edit-copy.png</file>
+        <file>icons/16x16/edit-paste.png</file>
+        <file>icons/16x16/edit-redo.png</file>
+        <file>icons/16x16/edit-select-all.png</file>
+        <file>icons/16x16/edit-undo.png</file>
+        <file>icons/16x16/go-down-search.png</file>
+        <file>icons/16x16/go-up-search.png</file>
+        <file>icons/16x16/zoom-in.png</file>
+        <file>icons/16x16/zoom-original.png</file>
+        <file>icons/16x16/zoom-out.png</file>
+        <file>icons/16x16/configure.png</file>
+        <file>icons/32x32/configure.png</file>
+        <file>icons/32x32/preferences-system-network.png</file>
         <file>html/inicio.html</file>
         <file>html/castellano.html</file>
         <file>html/abreviaturas_y_signos_empleados.html</file>

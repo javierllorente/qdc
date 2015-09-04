@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normalon>:/iconos/qrae_72x72.png</normalon>
+    <normalon>:/icons/qrae_72x72.png</normalon>
    </iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -64,7 +64,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normalon>:/iconos/16x16/edit-find.png</normalon>
+            <normalon>:/icons/16x16/edit-find.png</normalon>
            </iconset>
           </property>
          </widget>
@@ -129,7 +129,7 @@
   <action name="actionSalir">
    <property name="icon">
     <iconset>
-     <normalon>:/iconos/16x16/application-exit.png</normalon>
+     <normalon>:/icons/16x16/application-exit.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -142,7 +142,7 @@
   <action name="actionAcerca_de">
    <property name="icon">
     <iconset>
-     <normalon>:/iconos/qrae_72x72.png</normalon>
+     <normalon>:/icons/qrae_72x72.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -167,7 +167,7 @@
   <action name="actionAumentar">
    <property name="icon">
     <iconset>
-     <normalon>:/iconos/16x16/zoom-in.png</normalon>
+     <normalon>:/icons/16x16/zoom-in.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -177,7 +177,7 @@
   <action name="actionReducir">
    <property name="icon">
     <iconset>
-     <normalon>:/iconos/16x16/zoom-out.png</normalon>
+     <normalon>:/icons/16x16/zoom-out.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -187,7 +187,7 @@
   <action name="actionNormal">
    <property name="icon">
     <iconset>
-     <normalon>:/iconos/16x16/zoom-original.png</normalon>
+     <normalon>:/icons/16x16/zoom-original.png</normalon>
     </iconset>
    </property>
    <property name="text">

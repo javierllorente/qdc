@@ -50,7 +50,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normalon>:/iconos/32x32/configure.png</normalon>
+        <normalon>:/icons/32x32/configure.png</normalon>
        </iconset>
       </property>
      </item>
@@ -60,7 +60,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normalon>:/iconos/32x32/preferences-system-network.png</normalon>
+        <normalon>:/icons/32x32/preferences-system-network.png</normalon>
        </iconset>
       </property>
      </item>
@@ -143,7 +143,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normalon>:/iconos/16x16/edit-clear-history.png</normalon>
+             <normalon>:/icons/16x16/edit-clear-history.png</normalon>
             </iconset>
            </property>
           </widget>

@@ -24,7 +24,7 @@ DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
     launcher.files = qrae.desktop
     launcher.path = /usr/share/applications
 
-    hicolor128.files = qrae.png
+    hicolor128.files = icons/qrae.png
     hicolor128.path = $$hicolor/128x128/apps
 
     autostart.path = $$data_directory/autostart
@@ -37,7 +37,7 @@ DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
 }
 
 win32 {
-    RC_ICONS = qrae.ico
+    RC_ICONS = icons/qrae.ico
     QMAKE_TARGET_COMPANY = Javier Llorente
     QMAKE_TARGET_PRODUCT = qRAE
     QMAKE_TARGET_DESCRIPTION = Diccionario castellano de la RAE
@@ -45,7 +45,7 @@ win32 {
 }
 
 osx {
-    ICON = qrae.icns
+    ICON = icons/qrae.icns
     LIBS += -framework CoreServices -framework CoreFoundation
 }
 
