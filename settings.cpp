@@ -173,19 +173,24 @@ void Settings::saveAutostartValue()
 
 void Settings::setLaunchOnStartup(bool enable)
 {
+    /*
+     * Based on Daniel Molkentin's work on libsync utilities
+     * https://github.com/owncloud/client/blob/master/src/libsync/
+    */
+
     QString applicationName = QCoreApplication::applicationName();
+
 #if defined(Q_OS_WIN)
+
     QSettings settings(windowsRunPath, QSettings::NativeFormat);
     if (enable) {
         settings.setValue(applicationName, QCoreApplication::applicationFilePath().replace('/','\\'));
     } else {
         settings.remove(applicationName);
     }
+
 #elif defined(Q_OS_MAC)
-    /*
-     * Based on Daniel Molkentin's work
-     * https://github.com/owncloud/client/blob/master/src/libsync/utility_mac.cpp
-    */
+
     QString filePath = QDir(QCoreApplication::applicationDirPath()+QString("/../..")).absolutePath();
     CFStringRef folderCFStr = CFStringCreateWithCString(0, filePath.toUtf8().data(), kCFStringEncodingUTF8);
     CFURLRef urlRef = CFURLCreateWithFileSystemPath (0, folderCFStr, kCFURLPOSIXPathStyle, true);
@@ -222,6 +227,7 @@ void Settings::setLaunchOnStartup(bool enable)
 
     CFRelease(folderCFStr);
     CFRelease(urlRef);
+
 #else // Linux, FreeBSD
 
 #if QT_VERSION >= 0x050000
@@ -251,6 +257,7 @@ void Settings::setLaunchOnStartup(bool enable)
             qDebug() << "Could not remove autostart desktop file";
         }
     }
+
 #endif
     saveAutostartValue();
 }
