@@ -51,7 +51,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normalon>:/iconos/16x16/dialog-close.png</normalon>
+       <normalon>:/icons/16x16/dialog-close.png</normalon>
       </iconset>
      </property>
      <property name="iconSize">
@@ -94,7 +94,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normalon>:/iconos/16x16/go-down-search.png</normalon>
+       <normalon>:/icons/16x16/go-down-search.png</normalon>
       </iconset>
      </property>
     </widget>
@@ -106,7 +106,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normalon>:/iconos/16x16/go-up-search.png</normalon>
+       <normalon>:/icons/16x16/go-up-search.png</normalon>
       </iconset>
      </property>
     </widget>
