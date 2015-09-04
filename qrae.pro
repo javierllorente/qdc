@@ -17,10 +17,23 @@ VERSION = 0.4.99
 DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
 
 !mac:unix {
+    target.path = /usr/bin
+    hicolor = /usr/share/icons/hicolor
     data_directory = /usr/share/qrae
+
+    launcher.files = qrae.desktop
+    launcher.path = /usr/share/applications
+
+    hicolor128.files = qrae.png
+    hicolor128.path = $$hicolor/128x128/apps
+
     autostart.path = $$data_directory/autostart
-    autostart.files += autostart/qrae.desktop
-    INSTALLS += autostart
+    autostart.files = autostart/qrae.desktop
+
+    INSTALLS += target \
+        launcher \
+        hicolor128 \
+        autostart
 }
 
 win32: RC_ICONS = qrae.ico
