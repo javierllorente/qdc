@@ -236,7 +236,7 @@ void Settings::setLaunchOnStartup(bool enable)
     QString userAutoStartPath = QDir::homePath() + "/.config";
 #endif
     userAutoStartPath += "/autostart/";
-    QString targetDesktopFile = userAutoStartPath + applicationName + ".desktop";
+    QString targetDesktopFile = userAutoStartPath + applicationName.toLower() + ".desktop";
 
     if (enable) {
         if (!QDir().exists(userAutoStartPath) && !QDir().mkpath(userAutoStartPath)) {
@@ -244,8 +244,8 @@ void Settings::setLaunchOnStartup(bool enable)
             return;
         }
 
-        QString sourceDesktopFile = "/usr/share/" + applicationName
-                + "/autostart/" + applicationName + ".desktop";
+        QString sourceDesktopFile = "/usr/share/" + applicationName.toLower()
+                + "/autostart/" + applicationName.toLower() + ".desktop";
 
         if (!QFile::copy(sourceDesktopFile, targetDesktopFile)) {
             qDebug() << "Could not copy desktop file";
