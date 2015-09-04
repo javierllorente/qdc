@@ -36,7 +36,13 @@ DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
         autostart
 }
 
-win32: RC_ICONS = qrae.ico
+win32 {
+    RC_ICONS = qrae.ico
+    QMAKE_TARGET_COMPANY = Javier Llorente
+    QMAKE_TARGET_PRODUCT = qRAE
+    QMAKE_TARGET_DESCRIPTION = Diccionario castellano de la RAE
+    QMAKE_TARGET_COPYRIGHT = Copyright (C) 2012-2015 Javier Llorente
+}
 
 osx {
     ICON = qrae.icns
