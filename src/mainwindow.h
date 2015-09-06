@@ -26,19 +26,18 @@
 #include <QtCore/QPointer>
 
 #if QT_VERSION >= 0x050000
-#include <QtWidgets/QSystemTrayIcon>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QCompleter>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QApplication>
 #else
-#include <QtGui/QSystemTrayIcon>
 #include <QtGui/QMenu>
 #include <QtGui/QCompleter>
 #include <QtGui/QMainWindow>
 #include <QtGui/QApplication>
 #endif
 
+#include "systray.h"
 #include "libqrae.h"
 #include "proxysettings.h"
 #include "settings.h"
@@ -59,11 +58,7 @@ public:
     
 private:
     Ui::MainWindow *ui;
-    void createTrayIcon();
-    QSystemTrayIcon *trayIcon;
-    QMenu *trayIconMenu;
-    QAction *actionQuit;
-    QAction *actionRestore;
+    SysTray *m_sysTray;
     void createMenuEditarActions();
     QAction *actionDeshacer;
     QAction *actionRehacer;

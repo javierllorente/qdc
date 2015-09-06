@@ -49,13 +49,13 @@ const QString ayudaCastellano = "qrc:/html/castellano.html";
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
+    m_sysTray(new SysTray(this)),
     m_drae(new DRAE()),
     m_timer(new QTimer(this)),
     m_history(new History()),
     m_searchWidget(0),
     m_proxySettings(new ProxySettings())
 {
-    createTrayIcon();
     ui->setupUi(this);
 
     createMenuEditarActions();
@@ -70,33 +70,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete m_sysTray;
     delete m_proxySettings;
     writeSettings();
     delete ui;
-}
-
-void MainWindow::createTrayIcon()
-{
-    actionRestore = new QAction(tr("&Ocultar"), this);
-    connect(actionRestore, SIGNAL(triggered()), this, SLOT(toggleVisibility()));
-
-    actionQuit = new QAction(tr("&Salir"), this);
-    actionQuit->setIcon(QIcon(":/icons/16x16/application-exit.png"));
-    connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
-
-    trayIconMenu = new QMenu(this);
-    trayIconMenu->addAction(actionRestore);
-    trayIconMenu->addAction(actionQuit);
-
-    trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setIcon(QIcon(":/icons/qrae_72x72.png"));
-    trayIcon->setToolTip("Diccionario de la RAE");
-    trayIcon->setContextMenu(trayIconMenu);
-
-    connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this,
-            SLOT(trayIconClicked(QSystemTrayIcon::ActivationReason)));
-
-    trayIcon->show();
 }
 
 void MainWindow::createMenuEditarActions()
@@ -281,13 +258,13 @@ void MainWindow::consultar()
 void MainWindow::ocultarVentana()
 {
     hide();
-    actionRestore->setText("&Mostrar");
+    m_sysTray->toggleVisibilityText(isVisible());
 }
 
 void MainWindow::mostrarVentana()
 {
     showNormal();
-    actionRestore->setText("&Ocultar");
+    m_sysTray->toggleVisibilityText(isVisible());
 }
 
 void MainWindow::toggleVisibility()
