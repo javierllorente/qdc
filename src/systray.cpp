@@ -76,12 +76,7 @@ void SysTray::readSettings()
     bool plasma5 = QFile::decodeName(qgetenv("KDE_SESSION_VERSION"))=="5";
 
     if (settings.value("Monochrome").isNull()) {
-        if (plasma5) {
-            qDebug() << "--MonochromeTrayIcon";
-            setMonochromeIcon(true);
-        } else {
-            setMonochromeIcon(false);
-        }
+        setMonochromeIcon(plasma5);
     } else {
         setMonochromeIcon(settings.value("Monochrome").toBool());
     }
