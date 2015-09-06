@@ -91,7 +91,7 @@
          <item>
           <widget class="QCheckBox" name="checkBoxMonochromeIcon">
            <property name="text">
-            <string>Icono monocromo</string>
+            <string>Usar icono monocromo en la bandeja del sistema</string>
            </property>
           </widget>
          </item>
