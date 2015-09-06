@@ -56,14 +56,16 @@ SOURCES += main.cpp\
     proxysettings.cpp \
     settings.cpp \
     history.cpp \
-    searchwidget.cpp
+    searchwidget.cpp \
+    systray.cpp
 
 HEADERS  += mainwindow.h\
          libqrae.h \
     proxysettings.h \
     settings.h \
     history.h \
-    searchwidget.h
+    searchwidget.h \
+    systray.h
 
 FORMS    += mainwindow.ui \
     settings.ui \
