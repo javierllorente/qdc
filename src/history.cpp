@@ -20,6 +20,8 @@
 
 #include "history.h"
 
+const QString dbName = "historial.sqlite";
+
 History::History()
 {
     init();
@@ -38,11 +40,11 @@ void History::init()
         dir.mkpath(dataDir);
     }
 
-    QString dbName = dir.filePath("historial.sqlite");
-    qDebug() << "db:" << dbName;
+    QString dbPath = dir.filePath(dbName);
+    qDebug() << "db:" << dbPath;
 
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbName);
+    db.setDatabaseName(dbPath);
 
     if (!db.open()) {
         qDebug() << "Error. No se ha podido abrir la base de datos";
