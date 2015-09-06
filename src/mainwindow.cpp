@@ -386,7 +386,7 @@ void MainWindow::readSettings()
 
 void MainWindow::showSettings()
 {
-    Settings *settings = new Settings(this, m_history, m_proxySettings);
+    Settings *settings = new Settings(this, m_sysTray, m_history, m_proxySettings);
     if (settings->exec()) {
 
     }

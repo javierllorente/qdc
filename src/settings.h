@@ -24,6 +24,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QNetworkProxy>
+#include "systray.h"
 #include "history.h"
 #include "proxysettings.h"
 
@@ -36,7 +37,7 @@ class Settings : public QDialog
     Q_OBJECT
 
 public:
-    explicit Settings(QWidget *parent = 0, History *history = 0, ProxySettings *proxySettings = 0);
+    explicit Settings(QWidget *parent = 0, SysTray *sysTray = 0, History *history = 0, ProxySettings *proxySettings = 0);
     ~Settings();
 
 private slots:
@@ -52,11 +53,14 @@ private:
     void restoreProxySettings();
     enum ProxyType { NoProxy, SystemProxy, ManualProxy };
     QNetworkProxy proxy;
+    SysTray *m_sysTray;
     History *m_history;
     ProxySettings *m_proxySettings;
     void loadAutostartValue();
     void saveAutostartValue();
     void setLaunchOnStartup(bool enable);
+    void loadMonochromeIconValue();
+
 };
 
 #endif // SETTINGS_H

@@ -29,9 +29,10 @@
 
 const QString windowsRunPath = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 
-Settings::Settings(QWidget *parent, History *history, ProxySettings *proxySettings) :
+Settings::Settings(QWidget *parent, SysTray *sysTray, History *history, ProxySettings *proxySettings) :
     QDialog(parent),
     ui(new Ui::Settings),
+    m_sysTray(sysTray),
     m_history(history),
     m_proxySettings(proxySettings)
 {
@@ -39,6 +40,7 @@ Settings::Settings(QWidget *parent, History *history, ProxySettings *proxySettin
 
     loadProxySettings();
     loadAutostartValue();
+    loadMonochromeIconValue();
 
     connect(ui->listWidget, SIGNAL(currentRowChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
     ui->listWidget->setCurrentRow(0);
@@ -62,6 +64,7 @@ void Settings::on_buttonBox_accepted()
 {
     saveProxySettings();
     setLaunchOnStartup(ui->checkBoxStartup->isChecked());
+    m_sysTray->setMonochromeIcon(ui->checkBoxMonochromeIcon->isChecked());
 }
 
 void Settings::on_buttonBox_rejected()
@@ -260,6 +263,11 @@ void Settings::setLaunchOnStartup(bool enable)
 
 #endif
     saveAutostartValue();
+}
+
+void Settings::loadMonochromeIconValue()
+{
+    ui->checkBoxMonochromeIcon->setChecked(m_sysTray->isMonochromeIcon());
 }
 
 void Settings::on_pushButtonBorrarHistorial_clicked()
