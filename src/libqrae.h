@@ -28,12 +28,9 @@ class DRAE
 {
 
 public:
-    DRAE();
-    ~DRAE();
-    
+    DRAE();  
     QUrl consultar(QString);
-    QString getErrorMsg();
-  
-      
+    QString getErrorMsg() const;
+
 };
 #endif // LIBQRAE_H

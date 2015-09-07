@@ -34,7 +34,7 @@ DRAE::DRAE()
 QUrl DRAE::consultar(QString termino)
 {  
     QUrl url("http://lema.rae.es/drae/srv/search"); 
-    QString draeQuery = "val"; 
+    const QString draeQuery = "val";
   
     if (!termino.isEmpty()) {
       
@@ -60,6 +60,7 @@ QUrl DRAE::consultar(QString termino)
 
         valBA.append(draeQuery);
         terBA.append(termino);
+
 #if QT_VERSION >= 0x050000
         QUrlQuery urlQuery;
         urlQuery.addQueryItem(valBA, terBA);
@@ -67,13 +68,14 @@ QUrl DRAE::consultar(QString termino)
 #else
         url.addEncodedQueryItem(valBA, terBA);
 #endif
+
     }
     return url;
 }
 
-QString DRAE::getErrorMsg()
+QString DRAE::getErrorMsg() const
 {
-   QString errorMsg(
+    return QString(
                 "<html>"
                 "<head>"
                 "<title>Error</title>"
@@ -98,6 +100,4 @@ QString DRAE::getErrorMsg()
                 "</body>"
                 "</html>"
                 );
-   
-   return errorMsg;
 }
