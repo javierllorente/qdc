@@ -23,6 +23,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setOrganizationName("qRAE");
+    a.setOrganizationDomain("javierllorente.com");
     a.setApplicationName("qRAE");
     a.setApplicationVersion(QRAE_VERSION);
     MainWindow w;
