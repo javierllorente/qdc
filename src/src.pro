@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 }
 
 TARGET = qrae
+mac: TARGET = qRAE
 TEMPLATE = app
 
 VERSION = 0.4.99
