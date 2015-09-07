@@ -30,9 +30,9 @@ History::History()
 void History::init()
 {
 #if QT_VERSION >= 0x050000
-    const QString dataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/qraeqRAE";
+    const QString dataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/" + QCoreApplication::applicationName();
 #else
-    const QString dataDir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "qraeqRAE";
+    const QString dataDir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + QCoreApplication::applicationName();
 #endif
     QDir dir(dataDir);
 

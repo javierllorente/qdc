@@ -27,6 +27,7 @@
 #include <QDesktopServices>
 #endif
 
+#include <QCoreApplication>
 #include <QDir>
 #include <QDebug>
 #include <QSqlDatabase>
