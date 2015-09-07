@@ -337,7 +337,7 @@ void MainWindow::on_actionSalir_triggered()
 void MainWindow::writeSettings()
 {
     qDebug() << "Escribiendo ajustes...";
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("MainWindow");
 
     settings.setValue("Maximized", isMaximized());
@@ -355,7 +355,7 @@ void MainWindow::writeSettings()
 void MainWindow::readSettings()
 {
     qDebug() << "Leyendo ajustes...";
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("MainWindow");
 
     move(settings.value("pos", QPoint(200, 200)).toPoint());

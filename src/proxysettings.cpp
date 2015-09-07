@@ -33,7 +33,7 @@ ProxySettings::~ProxySettings()
 void ProxySettings::readConfig()
 {
     qDebug() << "Leyendo configuración del proxy...";
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("Proxy");
     QNetworkProxy::ProxyType proxyType = (QNetworkProxy::ProxyType) settings.value("Type").toInt();
     proxy.setType(proxyType);
@@ -58,7 +58,7 @@ void ProxySettings::readConfig()
 void ProxySettings::writeConfig()
 {
     qDebug() << "Escribiendo configuración del proxy...";
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("Proxy");
     settings.setValue("Type", proxy.type());
 

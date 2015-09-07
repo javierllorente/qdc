@@ -70,7 +70,7 @@ bool SysTray::isMonochromeIcon()
 
 void SysTray::readSettings()
 {
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("SysTray");
 
     bool plasma5 = QFile::decodeName(qgetenv("KDE_SESSION_VERSION"))=="5";
@@ -85,7 +85,7 @@ void SysTray::readSettings()
 
 void SysTray::writeSettings()
 {
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("SysTray");
     settings.setValue("Monochrome", m_monochrome);
     settings.endGroup();

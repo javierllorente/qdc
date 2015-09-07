@@ -160,7 +160,7 @@ void Settings::restoreProxySettings()
 
 void Settings::loadAutostartValue()
 {
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("MainWindow");
     ui->checkBoxStartup->setChecked(settings.value("Autostart").toBool());
     settings.endGroup();
@@ -168,7 +168,7 @@ void Settings::loadAutostartValue()
 
 void Settings::saveAutostartValue()
 {
-    QSettings settings("qRAE","Diccionario castellano de la RAE");
+    QSettings settings;
     settings.beginGroup("MainWindow");
     settings.setValue("Autostart", ui->checkBoxStartup->isChecked());
     settings.endGroup();
