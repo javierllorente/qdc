@@ -24,6 +24,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QNetworkProxy>
+#include <QWebSettings>
 #include "systray.h"
 #include "history.h"
 #include "proxysettings.h"

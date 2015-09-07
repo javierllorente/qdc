@@ -283,5 +283,6 @@ void Settings::on_pushButtonBorrarHistorial_clicked()
     if (ret==QMessageBox::Ok) {
         qDebug() << "Borrando historial...";
         m_history->clear();
+        QWebSettings::clearMemoryCaches();
     }
 }
