@@ -42,7 +42,11 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=%{buildroot} install
+install -m 644 scripts/migrate.sh %{buildroot}%{_datadir}/%{name}/migrate.sh
 %suse_update_desktop_file -i %name Dictionary
+
+%post
+sh %{_datadir}/%{name}/migrate.sh
 
 %clean
 rm -rf %{buildroot}
