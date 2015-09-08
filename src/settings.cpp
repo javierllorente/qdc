@@ -63,7 +63,9 @@ void Settings::on_radioButtonManualProxy_toggled(bool checked)
 void Settings::on_buttonBox_accepted()
 {
     saveProxySettings();
-    setLaunchOnStartup(ui->checkBoxStartup->isChecked());
+    if (autostart != ui->checkBoxStartup->isChecked()) {
+        setLaunchOnStartup(ui->checkBoxStartup->isChecked());
+    }
     m_sysTray->setMonochromeIcon(ui->checkBoxMonochromeIcon->isChecked());
 }
 
@@ -162,7 +164,8 @@ void Settings::loadAutostartValue()
 {
     QSettings settings;
     settings.beginGroup("MainWindow");
-    ui->checkBoxStartup->setChecked(settings.value("Autostart").toBool());
+    autostart = settings.value("Autostart").toBool();
+    ui->checkBoxStartup->setChecked(autostart);
     settings.endGroup();
 }
 

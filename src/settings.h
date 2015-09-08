@@ -59,6 +59,7 @@ private:
     ProxySettings *m_proxySettings;
     void loadAutostartValue();
     void saveAutostartValue();
+    bool autostart;
     void setLaunchOnStartup(bool enable);
     void loadMonochromeIconValue();
 
