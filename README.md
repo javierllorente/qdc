@@ -1,7 +1,11 @@
 qRAE
 ====
 
-qRAE es un cliente multiplataforma del diccionario castellano de la RAE
+qRAE es un cliente multiplataforma del diccionario castellano de la RAE.
+
+Funcionalidades:
+- Historial
+- Muchas más en la siguiente versión :)
 
 Copyright (C) 2013-2015 Javier Llorente <javier@opensuse.org>
 
