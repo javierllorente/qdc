@@ -244,6 +244,7 @@ void MainWindow::resultadoCarga(bool ok)
 void MainWindow::errorAlCargar()
 {
     ui->webView->setHtml( m_drae->getErrorMsg() );
+    ui->statusBar->clearMessage();
     qDebug() << "Ha fallado la carga";
 }
 
