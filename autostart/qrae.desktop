@@ -2,10 +2,8 @@
 Type=Application
 Name=qRAE
 Name[es]=qRAE
-GenericName=Castilian RAE dictionary
-GenericName[es]=Diccionario castellano de la RAE
-Comment=Castilian RAE dictionary
-Comment[es]=Diccionario castellano de la RAE
+GenericName=RAE dictionary
+GenericName[es]=Diccionario de la RAE
 Icon=qrae
 Exec=qrae
 Terminal=false
