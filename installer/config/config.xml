@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>qRAE</Name>
+    <Version>0.5.0</Version>
+    <Title>qRAE</Title>
+    <Publisher>Javier Llorente</Publisher>
+    <StartMenuDir>qRAE</StartMenuDir>
+    <TargetDir>@ApplicationsDir@/qRAE</TargetDir>
+</Installer>
