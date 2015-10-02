@@ -43,7 +43,7 @@ win32 {
     QMAKE_TARGET_PRODUCT = qRAE
     QMAKE_TARGET_DESCRIPTION = Diccionario castellano de la RAE
     QMAKE_TARGET_COPYRIGHT = Copyright (C) 2012-2015 Javier Llorente
-    QMAKE_POST_LINK += $$PWD/../installer/buildinstaller.bat
+    QMAKE_POST_LINK += $$PWD/../installer/build.bat
 }
 
 osx {
