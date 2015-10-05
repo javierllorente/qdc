@@ -13,8 +13,11 @@
    height="128"
    id="svg3023"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="qrae.svg">
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="qrae2.svg"
+   inkscape:export-filename="/home/javier/projects/qrae/icons/qrae_512x512.png"
+   inkscape:export-xdpi="360"
+   inkscape:export-ydpi="360">
   <defs
      id="defs3025" />
   <sodipodi:namedview
@@ -24,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0074671"
-     inkscape:cx="211.01491"
-     inkscape:cy="139.41437"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="56.470104"
+     inkscape:cy="69.854657"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -34,11 +37,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1366"
-     inkscape:window-height="721"
-     inkscape:window-x="-2"
-     inkscape:window-y="-3"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="970"
+     inkscape:window-height="831"
+     inkscape:window-x="846"
+     inkscape:window-y="166"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata3028">
     <rdf:RDF>
@@ -47,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,7 +61,7 @@
      transform="translate(-11.4375,-878.95536)">
     <g
        id="g3042"
-       transform="translate(-41.705351,447.73605)">
+       transform="matrix(1.5611033,0,0,1.5611033,-107.43459,169.86686)">
       <rect
          inkscape:export-ydpi="89"
          inkscape:export-xdpi="89"
