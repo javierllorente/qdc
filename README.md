@@ -9,6 +9,8 @@ Funcionalidades:
 
 Copyright (C) 2013-2015 Javier Llorente <javier@opensuse.org>
 
+Nota: Las definiciones que se muestran en esta aplicación son propiedad de la Real Academia Española.
+
 Instalación
 -----------
 qRAE está disponible en rpm, exe, app en
