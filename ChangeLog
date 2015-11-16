@@ -1,5 +1,22 @@
 Registro de cambios de qRAE
 ===========================
+Versión 1.0.0 (2015-??-??)
+* Nueva funcionalidad: instalador de Windows
+* Mejora: al compilar en Windows, te genera automáticamente el instalador
+* Nueva funcionalidad: ejecutar al arrancar el sistema (Un*x, Mac y Windows).
+  Sólo guarda el valor si ha habido cambios
+* Mensaje de error mejorado
+* Script de migración a la versión 1.0.0 añadido
+* Icono monocromo de la bandeja del sistema añadido (estilo Plasma 5)
+* Nueva funcionalidad: menú ver (aumentar/reducir tamaño)
+* Nueva funcionalidad: herramienta de búsqueda de texto en la definición
+* Nueva funcionalidad: menú editar (deshacer/rehacer, copiar/pegar, 
+  seleccionar todo, buscar texto, ajustes)
+* Nueva funcionalidad: borrar historial (también elimina archivos temporales)
+* Nueva funcionalidad: configuración de proxy
+* Nueva funcionalidad: diálogo de ajustes
+* Mejoras varias (restructuración del código)
+
 Versión 0.4.2 (2015-01-29)
 * Tiempo de espera para cargar el resultado de la consulta cambiado a 30 segundos
 
