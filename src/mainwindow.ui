@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normalon>:/icons/qrae_72x72.png</normalon>
+    <normalon>:/icons/qdc_72x72.png</normalon>
    </iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -142,7 +142,7 @@
   <action name="actionAcerca_de">
    <property name="icon">
     <iconset>
-     <normalon>:/icons/qrae_72x72.png</normalon>
+     <normalon>:/icons/qdc_72x72.png</normalon>
     </iconset>
    </property>
    <property name="text">

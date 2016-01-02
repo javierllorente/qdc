@@ -1,6 +1,7 @@
-Registro de cambios de qRAE
+Registro de cambios de qdc
 ===========================
-Versión 1.0.0 (2015-??-??)
+Versión 1.0.0 (2016-??-??)
+* Cambio de nombre: ahora se llama qdc
 * Nueva funcionalidad: instalador de Windows
 * Mejora: al compilar en Windows, te genera automáticamente el instalador
 * Nueva funcionalidad: ejecutar al arrancar el sistema (Un*x, Mac y Windows).
@@ -45,4 +46,4 @@ Versión 0.2.3 (2013-06-06)
 * Mensaje de error actualizado
 
 Versión 0.2.2 (2013-05-15)
-* Primera versión de qRAE
+* Primera versión de qdc

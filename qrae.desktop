@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=qRAE
-Name[es]=qRAE
-GenericName=RAE dictionary
-GenericName[es]=Diccionario de la RAE
-Icon=qrae
-Exec=qrae
-Categories=Office;Dictionary;

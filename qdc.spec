@@ -1,7 +1,8 @@
 #
-# spec file for package qrae
+# spec file for package qdc
 #
 # Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2015-2016 Javier Llorente
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +17,10 @@
 #
 
 
-Name:           qrae
+Name:           qdc
 Version:        0.4.99
 Release:        0
-Summary:        RAE dictionary
+Summary:        Castilian dictionary
 License:        GPL-2.0 or GPL-3.0
 Group:          Productivity/Office/Dictionary
 Url:            http://www.javierllorente.com/
@@ -31,7 +32,7 @@ BuildRequires:  update-desktop-files
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-A Qt-based RAE dictionary client
+A Qt-based Castilian dictionary
 
 %prep
 %setup -q -n %{name}

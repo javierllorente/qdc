@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=qdc
+Name[es]=qdc
+GenericName=Castilian dictionary
+GenericName[es]=Diccionario castellano
+Icon=qdc
+Exec=qdc
+Categories=Office;Dictionary;

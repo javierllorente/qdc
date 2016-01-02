@@ -10,25 +10,25 @@ greaterThan(QT_MAJOR_VERSION, 4) {
     QT += webkitwidgets
 }
 
-TARGET = qrae
-mac: TARGET = qRAE
+TARGET = qdc
+mac: TARGET = qdc
 TEMPLATE = app
 
 VERSION = 0.4.99
-DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
+DEFINES *= QDC_VERSION=\\\"""$$VERSION"\\\""
 
 !mac:unix {
     target.path = /usr/bin
     hicolor = /usr/share/icons/hicolor
-    data_directory = /usr/share/qrae
+    data_directory = /usr/share/qdc
 
-    launcher.files = ../qrae.desktop
+    launcher.files = ../qdc.desktop
     launcher.path = /usr/share/applications
 
-    hicolor128.files = ../icons/qrae.png
+    hicolor128.files = ../icons/qdc.png
     hicolor128.path = $$hicolor/128x128/apps
 
-    autostart.files = ../autostart/qrae.desktop
+    autostart.files = ../autostart/qdc.desktop
     autostart.path = $$data_directory/autostart
 
     INSTALLS += target \
@@ -38,16 +38,16 @@ DEFINES *= QRAE_VERSION=\\\"""$$VERSION"\\\""
 }
 
 win32 {
-    RC_ICONS = ../icons/qrae.ico
+    RC_ICONS = ../icons/qdc.ico
     QMAKE_TARGET_COMPANY = Javier Llorente
-    QMAKE_TARGET_PRODUCT = qRAE
-    QMAKE_TARGET_DESCRIPTION = Diccionario castellano de la RAE
-    QMAKE_TARGET_COPYRIGHT = Copyright (C) 2013-2015 Javier Llorente
+    QMAKE_TARGET_PRODUCT = qdc
+    QMAKE_TARGET_DESCRIPTION = Diccionario castellano
+    QMAKE_TARGET_COPYRIGHT = Copyright (C) 2013-2016 Javier Llorente
     QMAKE_POST_LINK += $$PWD/../installer/build.bat
 }
 
 osx {
-    ICON = ../icons/qrae.icns
+    ICON = ../icons/qdc.icns
     LIBS += -framework CoreServices -framework CoreFoundation
 }
 

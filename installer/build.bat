@@ -1,17 +1,17 @@
 ::
 :: Script for building a Windows installer using QtIFW
-:: Copyright (C) 2015 Javier Llorente <javier@opensuse.org>
+:: Copyright (C) 2015-2016 Javier Llorente <javier@opensuse.org>
 :: 
 
 @ECHO OFF
 
 SET buildroot=c:\Users\Javier\Documents
-SET builddir=%buildroot%\build-qrae-Desktop_Qt_5_5_0_MinGW_32bit-Release\src\release
+SET builddir=%buildroot%\build-qdc-Desktop_Qt_5_5_0_MinGW_32bit-Release\src\release
 SET pkgname=com.javierllorente
-SET instpkgs=%buildroot%\qrae\installer\packages
+SET instpkgs=%buildroot%\qdc\installer\packages
 SET pkgdata=%instpkgs%\%pkgname%\data
-SET instconfig=%buildroot%\qrae\installer\config\config.xml
-SET instfile=qRAE.exe
+SET instconfig=%buildroot%\qdc\installer\config\config.xml
+SET instfile=qdc.exe
 
 SET qtdir=c:\Qt\Qt5.5.0
 SET qtifwdir=C:\Qt\QtIFW2.0.1

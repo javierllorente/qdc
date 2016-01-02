@@ -1,7 +1,7 @@
 /*
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2015 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2015-2016 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
 
 #include "systray.h"
 
-const QString monochromeIcon = ":/icons/qrae_72x72_mono.png";
-const QString colourIcon = ":/icons/qrae_72x72.png";
+const QString monochromeIcon = ":/icons/qdc_72x72_mono.png";
+const QString colourIcon = ":/icons/qdc_72x72.png";
 
 SysTray::SysTray(QWidget *parent) :
     associatedWidget(parent)

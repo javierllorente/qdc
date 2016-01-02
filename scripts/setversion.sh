@@ -1,11 +1,11 @@
 # !/bin/bash
 #
-# This script sets the qRAE version and release date
+# This script sets the qdc version and release date
 #
-# Copyright (C) 2015 Javier Llorente <javier@opensuse.org>
+# Copyright (C) 2015-2016 Javier Llorente <javier@opensuse.org>
 #
 
-SPEC="../qrae.spec"
+SPEC="../qdc.spec"
 SRCPRO="../src/src.pro"
 CONFIGXML="../installer/config/config.xml"
 PACKAGEXML="../installer/packages/com.javierllorente/meta/package.xml"

@@ -1,20 +1,20 @@
 # !/bin/bash
 #
-# Migration to qRAE 0.5.0
+# Migration to qdc
 # This script migrates all users if run as root, 
 # otherwise just migrates the current user.
 #
-# Copyright (C) 2015 Javier Llorente <javier@opensuse.org>
+# Copyright (C) 2015-2016 Javier Llorente <javier@opensuse.org>
 #
 
 USRDIR=/home
 
-CONFIGDIR=".config/qRAE"
+CONFIGDIR=".config/qdc"
 OLDCONFIGFILE="Diccionario castellano de la RAE.conf"
-NEWCONFIGFILE="qRAE.conf"
+NEWCONFIGFILE="qdc.conf"
 
 OLDDATADIR=".local/share/data/qraeqRAE"
-NEWDATADIR=".local/share/data/qRAE"
+NEWDATADIR=".local/share/data/qdc"
 
 
 function migrate() {

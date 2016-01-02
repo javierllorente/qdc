@@ -1,7 +1,7 @@
 /* 
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2012-2015 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2012-2016 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,10 +23,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    a.setOrganizationName("qRAE");
+    a.setOrganizationName("qdc");
     a.setOrganizationDomain("javierllorente.com");
-    a.setApplicationName("qRAE");
-    a.setApplicationVersion(QRAE_VERSION);
+    a.setApplicationName("qdc");
+    a.setApplicationVersion(QDC_VERSION);
     MainWindow w;
 //    w.show();
     

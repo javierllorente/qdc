@@ -1,7 +1,7 @@
 /*
  *  qRAE - Un cliente del diccionario castellano de la RAE
  *
- *  Copyright (C) 2012-2015 Javier Llorente <javier@opensuse.org>
+ *  Copyright (C) 2012-2016 Javier Llorente <javier@opensuse.org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -311,14 +311,14 @@ void MainWindow::showContextMenu(const QPoint& position)
 void MainWindow::on_actionAcerca_de_triggered()
 {
 
-    QMessageBox::about(this,"Acerca de qRAE",
-                       "<h2 align=\"left\">qRAE</h2>"\
-                       "Diccionario castellano de la RAE<br>"\
-                       "Versi&oacute;n: " + QString(QRAE_VERSION) +
+    QMessageBox::about(this,"Acerca de qdc",
+                       "<h2 align=\"left\">qdc</h2>"\
+                       "Diccionario castellano<br>"\
+                       "Versi&oacute;n: " + QString(QDC_VERSION) +
                        "<div align=\"left\">"
                        "<p>"
-                       "&copy; 2013-2015 Javier Llorente <br>"
-                       "<a href=\"http://www.javierllorente.com/qrae/\">www.javierllorente.com/qrae/</a>"
+                       "&copy; 2013-2016 Javier Llorente <br>"
+                       "<a href=\"http://www.javierllorente.com/qdc/\">www.javierllorente.com/qdc/</a>"
                        "<br><br>"
                         "&copy; Proyecto Oxygen (iconos de los menús) <br>"
                        "<a href=\"https://techbase.kde.org/Projects/Oxygen\">techbase.kde.org/Projects/Oxygen</a>"

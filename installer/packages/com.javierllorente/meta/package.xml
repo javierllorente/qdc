@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-    <DisplayName>qRAE</DisplayName>
-    <Description>Diccionario castellano de la RAE</Description>
+    <DisplayName>qdc</DisplayName>
+    <Description>Diccionario castellano</Description>
     <Version>0.5.0-1</Version>
     <ReleaseDate>2015-09-15</ReleaseDate>
     <Default>true</Default>
