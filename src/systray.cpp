@@ -48,7 +48,7 @@ void SysTray::init()
     trayIconMenu->addAction(actionRestore);
     trayIconMenu->addAction(actionQuit);
 
-    setToolTip("Diccionario de la RAE");
+    setToolTip("Diccionario castellano");
     setContextMenu(trayIconMenu);
 
     connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), associatedWidget,
