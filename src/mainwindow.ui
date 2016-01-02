@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Diccionario de la RAE</string>
+   <string>Diccionario castellano</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -146,7 +146,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Acerca de &amp;qRAE</string>
+    <string>Acerca de &amp;qdc</string>
    </property>
   </action>
   <action name="actionUso_del_diccionario">
