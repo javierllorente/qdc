@@ -33,31 +33,13 @@ DRAE::DRAE()
     
 QUrl DRAE::consultar(QString termino)
 {  
-    QUrl url("http://lema.rae.es/drae/srv/search"); 
-    const QString draeQuery = "val";
+    QUrl url("http://dle.rae.es/");
+    const QString draeQuery = "w";
   
     if (!termino.isEmpty()) {
-      
+
         QByteArray valBA;
         QByteArray terBA;
-
-        // codificación de caracteres
-        termino.replace(QString::fromUtf8("á"), "%E1");
-        termino.replace(QString::fromUtf8("é"), "%E9");
-        termino.replace(QString::fromUtf8("í"), "%ED");
-        termino.replace(QString::fromUtf8("ó"), "%F3");
-        termino.replace(QString::fromUtf8("ú"), "%FA");
-        termino.replace(QString::fromUtf8("ñ"), "%F1");
-        termino.replace(QString::fromUtf8("ü"), "%FC");
-
-        termino.replace(QString::fromUtf8("Á"), "%C1");
-        termino.replace(QString::fromUtf8("É"), "%C9");
-        termino.replace(QString::fromUtf8("Í"), "%CD");
-        termino.replace(QString::fromUtf8("Ó"), "%D3");
-        termino.replace(QString::fromUtf8("Ú"), "%DA");
-        termino.replace(QString::fromUtf8("Ñ"), "%D1");
-        termino.replace(QString::fromUtf8("Ü"), "%DC");
-
         valBA.append(draeQuery);
         terBA.append(termino);
 
