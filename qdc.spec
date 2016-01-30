@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  update-desktop-files
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Obsoletes:      qrae
 
 %description
 A Qt-based Castilian dictionary
