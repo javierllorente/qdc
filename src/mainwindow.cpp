@@ -43,7 +43,10 @@
 #include <QtWebKit/QWebView>
 #endif
 
-const QString ayudaAbreviaturasYsignos = "qrc:/html/abreviaturas_y_signos_empleados.html";
+const QString ayudaGuiaConsulta = "http://dle.rae.es/?t=/docs/ayuda.html";
+const QString ayudaFormulario = "http://www.rae.es/consultas-linguisticas/formulario";
+const QString ayudaPreguntasFrecuentes = "http://www.rae.es/consultas-linguisticas/preguntas-frecuentes";
+const QString ayudaAbreviaturasYsignos = "http://www.rae.es/diccionario-de-la-lengua-espanola/sobre-la-22a-edicion-2001/abreviaturas-y-signos-empleados";
 const QString ayudaCastellano = "qrc:/html/castellano.html";
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -320,11 +323,15 @@ void MainWindow::on_actionAcerca_de_triggered()
                        "&copy; 2013-2016 Javier Llorente <br>"
                        "<a href=\"http://www.javierllorente.com/qdc/\">www.javierllorente.com/qdc/</a>"
                        "<br><br>"
-                        "&copy; Proyecto Oxygen (iconos de los menús) <br>"
+                        "&copy; Proyecto Oxygen (iconos de los menús) &nbsp; &nbsp; <br>"
                        "<a href=\"https://techbase.kde.org/Projects/Oxygen\">techbase.kde.org/Projects/Oxygen</a>"
                        "<br><br>"
+                       "&copy; Real Academia Espa&ntilde;ola<br>"
+                       "Las definiciones son propiedad de la RAE &nbsp; &nbsp;  <br>"
+                       "<a href=\"http://www.rae.es\">www.rae.es</a>"
+                       "<br><br>"
                        "<b>Licencia</b> <br>"
-                       "<nobr>Este programa est&aacute; bajo la licencia GPLv3</nobr> &nbsp;"
+                       "<nobr>Este programa est&aacute; bajo la licencia GPLv3</nobr> &nbsp; &nbsp;"
                        "</p>"
                        "</div>"
                        );
@@ -392,6 +399,21 @@ void MainWindow::showSettings()
 
     }
     delete settings;
+}
+
+void MainWindow::on_actionGuia_de_consulta_triggered()
+{
+    ui->webView->load(QUrl(ayudaGuiaConsulta));
+}
+
+void MainWindow::on_actionFormulario_triggered()
+{
+    ui->webView->load(QUrl(ayudaFormulario));
+}
+
+void MainWindow::on_actionPreguntas_frecuentes_triggered()
+{
+    ui->webView->load(QUrl(ayudaPreguntasFrecuentes));
 }
 
 void MainWindow::on_actionAbreviaturas_y_signos_triggered()

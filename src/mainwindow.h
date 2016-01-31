@@ -91,6 +91,9 @@ private slots:
     void on_actionSalir_triggered();
     void showSettings();
     void trayIconClicked(QSystemTrayIcon::ActivationReason);
+    void on_actionGuia_de_consulta_triggered();
+    void on_actionFormulario_triggered();
+    void on_actionPreguntas_frecuentes_triggered();
     void on_actionAbreviaturas_y_signos_triggered();
     void on_actionAlgunos_datos_triggered();
     void progresoCarga(int);
@@ -101,7 +104,6 @@ private slots:
     void aumentarTamano();
     void reducirTamano();
     void tamanoNormal();
-
 };
 
 #endif // MAINWINDOW_H

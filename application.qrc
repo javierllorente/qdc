@@ -19,9 +19,8 @@
         <file>icons/16x16/configure.png</file>
         <file>icons/32x32/configure.png</file>
         <file>icons/32x32/preferences-system-network.png</file>
-	<file>icons/128x128/dialog-warning.png</file>
+        <file>icons/128x128/dialog-warning.png</file>
         <file>html/inicio.html</file>
         <file>html/castellano.html</file>
-        <file>html/abreviaturas_y_signos_empleados.html</file>
     </qresource>
 </RCC>

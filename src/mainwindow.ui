@@ -90,7 +90,7 @@
      <x>0</x>
      <y>0</y>
      <width>380</width>
-     <height>29</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
@@ -103,6 +103,15 @@
     <property name="title">
      <string>A&amp;yuda</string>
     </property>
+    <widget class="QMenu" name="menuConsultas_ling_sticas">
+     <property name="title">
+      <string>Consultas lingüísticas</string>
+     </property>
+     <addaction name="actionFormulario"/>
+     <addaction name="actionPreguntas_frecuentes"/>
+    </widget>
+    <addaction name="actionGuia_de_consulta"/>
+    <addaction name="menuConsultas_ling_sticas"/>
     <addaction name="actionAbreviaturas_y_signos"/>
     <addaction name="actionAlgunos_datos"/>
     <addaction name="actionAcerca_de"/>
@@ -192,6 +201,21 @@
    </property>
    <property name="text">
     <string>&amp;Normal</string>
+   </property>
+  </action>
+  <action name="actionGuia_de_consulta">
+   <property name="text">
+    <string>Guía de consulta</string>
+   </property>
+  </action>
+  <action name="actionFormulario">
+   <property name="text">
+    <string>Formulario</string>
+   </property>
+  </action>
+  <action name="actionPreguntas_frecuentes">
+   <property name="text">
+    <string>Preguntas frecuentes</string>
    </property>
   </action>
  </widget>
