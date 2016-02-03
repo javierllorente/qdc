@@ -1,5 +1,5 @@
 /*
- *  qRAE - Un cliente del diccionario castellano de la RAE
+ *  qdc - Un cliente del diccionario castellano de la RAE
  *
  *  Copyright (C) 2015 Javier Llorente <javier@opensuse.org>
  *  Copyright (C) 2014 Daniel Molkentin <danimo@owncloud.com>
