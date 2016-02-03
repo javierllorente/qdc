@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
-    <Name>qRAE</Name>
-    <Version>0.5.0</Version>
-    <Title>qRAE</Title>
+    <Name>qdc</Name>
+    <Version>1.0.0</Version>
+    <Title>qdc</Title>
     <Publisher>Javier Llorente</Publisher>
-    <StartMenuDir>qRAE</StartMenuDir>
-    <TargetDir>@ApplicationsDir@/qRAE</TargetDir>
+    <StartMenuDir>Diccionario castellano</StartMenuDir>
+    <TargetDir>@ApplicationsDir@/qdc</TargetDir>
 </Installer>
