@@ -16,7 +16,7 @@ if [ -z "$1" ]; then
   exit 1;
 fi
 
-# qrae.spec
+# qdc.spec
 sed -i -e "/^ *Version:/ s/ [^ ]*$/ $1/" $SPEC
 
 # src.pro
