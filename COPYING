@@ -1,8 +1,8 @@
-      qRAE, un cliente del diccionario castellano de la RAE
-	    (a RAE Castilian dictionary client)
+      qdc, un cliente del diccionario castellano de la RAE
+	    (a Castilian RAE dictionary client)
 ===================================================================
 
- Copyright (C) 2013-2015 Javier Llorente
+ Copyright (C) 2013-2016 Javier Llorente
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,3 +25,9 @@ Están bajo la LGPL-2.1+.
   Copyright (C) 2013 The Oxygen Team
 
 http://www.kde.org/
+
+
+qdc no redistribuye ninguna definición de la RAE. Las definiciones 
+que se muestran en esta aplicación son propiedad de la Real Academia
+Española.
+  Copyright (C) Real Academia Española
