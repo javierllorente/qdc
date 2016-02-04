@@ -75,7 +75,7 @@
        <widget class="QWebView" name="webView">
         <property name="url">
          <url>
-          <string>qrc:/html/inicio.html</string>
+          <string>about:blank</string>
          </url>
         </property>
        </widget>
@@ -105,7 +105,7 @@
     </property>
     <widget class="QMenu" name="menuConsultas_ling_sticas">
      <property name="title">
-      <string>Consultas lingüísticas</string>
+      <string>&amp;Consultas lingüísticas</string>
      </property>
      <addaction name="actionFormulario"/>
      <addaction name="actionPreguntas_frecuentes"/>
@@ -205,17 +205,17 @@
   </action>
   <action name="actionGuia_de_consulta">
    <property name="text">
-    <string>Guía de consulta</string>
+    <string>&amp;Guía de consulta</string>
    </property>
   </action>
   <action name="actionFormulario">
    <property name="text">
-    <string>Formulario</string>
+    <string>&amp;Formulario</string>
    </property>
   </action>
   <action name="actionPreguntas_frecuentes">
    <property name="text">
-    <string>Preguntas frecuentes</string>
+    <string>&amp;Preguntas frecuentes</string>
    </property>
   </action>
  </widget>
