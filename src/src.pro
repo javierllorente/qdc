@@ -14,7 +14,7 @@ TARGET = qdc
 mac: TARGET = qdc
 TEMPLATE = app
 
-VERSION = 0.4.99
+VERSION = 1.0.0
 DEFINES *= QDC_VERSION=\\\"""$$VERSION"\\\""
 
 !mac:unix {

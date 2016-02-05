@@ -2,8 +2,8 @@
 <Package>
     <DisplayName>qdc</DisplayName>
     <Description>Diccionario castellano</Description>
-    <Version>0.5.0-1</Version>
-    <ReleaseDate>2015-09-15</ReleaseDate>
+    <Version>1.0.0-1</Version>
+    <ReleaseDate>2016-02-05</ReleaseDate>
     <Default>true</Default>
     <Script>installscript.qs</Script>
 </Package>

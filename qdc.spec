@@ -18,7 +18,7 @@
 
 
 Name:           qdc
-Version:        0.4.99
+Version:        1.0.0
 Release:        0
 Summary:        Castilian dictionary
 License:        GPL-2.0 or GPL-3.0

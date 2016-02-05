@@ -1,6 +1,6 @@
 Registro de cambios de qdc
 ===========================
-Versión 1.0.0 (2016-??-??)
+Versión 1.0.0 (2016-02-05)
 * Cambio de nombre: ahora se llama qdc
 * Nueva funcionalidad: instalador de Windows
 * Mejora: al compilar en Windows, te genera automáticamente el instalador
@@ -16,6 +16,7 @@ Versión 1.0.0 (2016-??-??)
 * Nueva funcionalidad: borrar historial (también elimina archivos temporales)
 * Nueva funcionalidad: configuración de proxy
 * Nueva funcionalidad: diálogo de ajustes
+* Nueva funcionalidad: menú de ayuda mejorado
 * Mejoras varias (restructuración del código)
 
 Versión 0.4.2 (2015-01-29)
