@@ -9,7 +9,8 @@
 
 USRDIR=/home
 
-CONFIGDIR=".config/qdc"
+OLDCONFIGDIR=".config/qRAE"
+NEWCONFIGDIR=".config/qdc"
 OLDCONFIGFILE="Diccionario castellano de la RAE.conf"
 NEWCONFIGFILE="qdc.conf"
 
@@ -22,10 +23,11 @@ function migrate() {
     echo "No user found! Exiting..."
     exit 1;
   fi
-  if [ -d "$USRDIR/$USR/$CONFIGDIR" ]; then
+  if [ -d "$USRDIR/$USR/$OLDCONFIGDIR" ]; then
     echo User: $USR
-    if [ -f "$USRDIR/$USR/$CONFIGDIR/$OLDCONFIGFILE" ]; then
-      mv "$USRDIR/$USR/$CONFIGDIR/$OLDCONFIGFILE" "$USRDIR/$USR/$CONFIGDIR/$NEWCONFIGFILE"
+    if [ -f "$USRDIR/$USR/$OLDCONFIGDIR/$OLDCONFIGFILE" ]; then
+      mv "$USRDIR/$USR/$OLDCONFIGDIR/" "$USRDIR/$USR/$NEWCONFIGDIR/"
+      mv "$USRDIR/$USR/$NEWCONFIGDIR/$OLDCONFIGFILE" "$USRDIR/$USR/$NEWCONFIGDIR/$NEWCONFIGFILE"
       echo Config file migrated
     fi
   fi 
